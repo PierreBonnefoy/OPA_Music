@@ -9,5 +9,4 @@ public class OpaMusicApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(OpaMusicApplication.class, args);
 	}
-
 }
