@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Controler {
 
     // Handle the home page of the web site
-    @RequestMapping("/")
+    /*@RequestMapping("/")
     public String home() {
         return "home";
     }
@@ -23,6 +23,6 @@ public class Controler {
     // Handling the signup redirection
     @GetMapping("/signUp")
     public String signUp() {
-        return ("signUp");
+        return ("signUp");*/
     }
 }
