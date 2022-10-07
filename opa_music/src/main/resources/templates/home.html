@@ -1,20 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Home | OPA Music</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <title>Spring Security Example</title>
     </head>
     <body>
-        HOME TO DO 
-        <a data-th-href="@{/signIn}">
-            <input type="button" value="Sign In">
-        </a>
-        <a data-th-href="@{/signUp}">
-            <input type="button" value="Sign Up">
-        </a>
+        <h1>Welcome!</h1>
+                        <a th:href="@{/register}">
+                            <input type="button" value="Register">
+                        </a>
+        
+        <p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
     </body>
 </html>
