@@ -1,0 +1,19 @@
+body{
+    font-family: century-gothic, sans-serif;
+    background-color: #0b1727;
+
+}
+
+.button{
+    background-color: #ff0139;
+    border-radius: 3em;
+    border : 2px solid;
+    border-color: #c0c0c1;
+    color: #c0c0c1;
+    padding-left: 1.5em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    padding-right: 1.5em;
+    font-weight: bold;
+    font-size: 1.25em;
+}

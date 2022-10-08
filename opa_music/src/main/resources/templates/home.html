@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home | OPA Music</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="general.css">
     </head>
     <body>
-        <h1>Welcome!</h1>
-                        <a th:href="@{/register}">
-                            <input type="button" value="Register">
-                        </a>
+        <a th:href="@{/register}">
+            <input class="button" type="button" value="REGISTER">
+        </a>
+        <h1>Opa Music</h1>
+        <div class="SearchSpace">
+            <form data-th-action="@{/search}" data-th-object="${search}" method="POST">
+                <input type="text" id="search" data-th-field="*{search}" placeholder="search">
+                <input type="submit" value="Search">
+            </form>
+        </div>
+        <br>
+        <!-- Load all video -->
+        <ul data-th-each="v : ${videos}">
+            <iframe  width="420" height="315" data-th-src="'http://www.youtube.com/embed/' + ${v.url} + '?showinfo=0&modestbranding=1'" frameborder="0" ><br></iframe>
+        </ul>
         
-        <p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
+
+
     </body>
 </html>

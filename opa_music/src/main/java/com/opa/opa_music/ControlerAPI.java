@@ -23,7 +23,7 @@ public class ControlerAPI {
     public String test(Model model){
         model.addAttribute("search", new Search());
         model.addAttribute("videos", videos.listVideo);
-        return "research";
+        return "home";
     }
 
     // Call for a search
@@ -57,6 +57,7 @@ public class ControlerAPI {
             read.close();
 
             // Select 'videoId' of the first 'maxResults' videos and add it to 'videos'
+            System.out.println(sb);
             JSONObject jObject = new JSONObject(sb.toString());
             for(int i=0;i<maxResults;i++){
                 videos.listVideo.add(new Video(jObject.getJSONArray("items").getJSONObject(i).getJSONObject("id").get("videoId").toString()));
