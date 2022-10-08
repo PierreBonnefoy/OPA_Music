@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class ControlerTmp {
+public class ControlerAPI {
     
     ListVideo videos = new ListVideo();
 
