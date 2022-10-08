@@ -1,7 +1,6 @@
 body{
     font-family: century-gothic, sans-serif;
     background-color: #0b1727;
-
 }
 
 .button{
@@ -17,3 +16,12 @@ body{
     font-weight: bold;
     font-size: 1.25em;
 }
+
+img{
+    display: block;
+    margin-top: 3em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+

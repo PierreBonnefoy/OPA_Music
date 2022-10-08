@@ -18,6 +18,11 @@ public class UserController {
         return ("register");
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return ("login");
+    }
+
     // Registration Form Handling
     @PostMapping("/addUser")
     public String addUser(@ModelAttribute User user, Model model) {
@@ -26,5 +31,6 @@ public class UserController {
         model.addAttribute("msg", message);
         return "home";
     }
+
 
 }

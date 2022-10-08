@@ -3,29 +3,31 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Home | OPAMusic</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="general.css">
+        <link rel="stylesheet" href="/css/general.css">
+        <link rel="stylesheet" href="/css/home.css">
+        <link rel="shortcut icon" type="/image/png" href="/images/icon.png">
     </head>
     <body>
-        <a th:href="@{/register}">
-            <input class="button" type="button" value="REGISTER">
+        
+        <a th:href="@{/register}" id="reg">
+            <input  class="button" type="button" value="REGISTER"> 
         </a>
-        <h1>Opa Music</h1>
-        <div class="SearchSpace">
-            <form data-th-action="@{/search}" data-th-object="${search}" method="POST">
-                <input type="text" id="search" data-th-field="*{search}" placeholder="search">
-                <input type="submit" value="Search">
-            </form>
-        </div>
+        <a th:href="@{/login}" id="log">
+            <input  class="button" type="button" value="   LOG IN   "> 
+        </a>
+
+        <img src="/images/logo.svg">
+        <form data-th-action="@{/search}" data-th-object="${search}" method="POST">
+            <input class="SearchSpace" type="text" id="search" data-th-field="*{search}" placeholder="Search">
+            <input id="sea" class="button" type="submit" value="Search">
+        </form>
         <br>
         <!-- Load all video -->
-        <ul data-th-each="v : ${videos}">
-            <iframe  width="420" height="315" data-th-src="'http://www.youtube.com/embed/' + ${v.url} + '?showinfo=0&modestbranding=1'" frameborder="0" ><br></iframe>
-        </ul>
-        
-
-
+        <span data-th-each="v : ${videos}">
+            <iframe  width="420" height="315" data-th-src="'http://www.youtube.com/embed/' + ${v.url} + '?showinfo=0&modestbranding=1'" frameborder="0" allowfullscreen><br></iframe>
+        </span>
     </body>
 </html>

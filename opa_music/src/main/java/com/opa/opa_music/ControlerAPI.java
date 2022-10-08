@@ -34,7 +34,7 @@ public class ControlerAPI {
         String url = "https://www.googleapis.com/youtube/v3/search";
         String type = "video";
         String part = "snippet";
-        int maxResults = 10;
+        int maxResults = 12;
         String key = "AIzaSyD5M5IzAQRkvydUZ12viKfkUzTwSa-BPAY";
 
         // Replace all whitespace by '+'
@@ -57,7 +57,6 @@ public class ControlerAPI {
             read.close();
 
             // Select 'videoId' of the first 'maxResults' videos and add it to 'videos'
-            System.out.println(sb);
             JSONObject jObject = new JSONObject(sb.toString());
             for(int i=0;i<maxResults;i++){
                 videos.listVideo.add(new Video(jObject.getJSONArray("items").getJSONObject(i).getJSONObject("id").get("videoId").toString()));
