@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
+//@Controller
 public class Controler {
 
     // Handle the home page of the web site
@@ -23,6 +23,6 @@ public class Controler {
     // Handling the signup redirection
     @GetMapping("/signUp")
     public String signUp() {
-        return ("signUp");*/
-    }
+        return ("signUp");
+    }*/
 }

@@ -10,18 +10,15 @@
     </head>
     <body>
         <h1>Opa Music</h1>
-        <div class="searchSpace">
+        <div class="SearchSpace">
             <form id="reseach" data-th-action="@{/search}" data-th-object="${search}" method="POST">
                 <input type="text" id="search" data-th-field="*{search}" placeholder="search">
                 <input type="submit" value="submit" id="goSearch">
             </form>
         </div>
         <br>
-        
-        <iframe data-th-each="v : ${videos}" width="420" height="315" src="http://www.youtube.com/embed/${v.url}" frameborder="0" allowfullscreen></iframe>
-
+        <!-- Load all video -->
+        <iframe data-th-each="v : ${videos}" width="420" height="315" data-th-src="'http://www.youtube.com/embed/' + ${v.url}" frameborder="0" allowfullscreen></iframe>
         
     </body>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="youtube_api.js"></script>-->
 </html>

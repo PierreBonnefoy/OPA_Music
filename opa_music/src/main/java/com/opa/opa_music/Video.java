@@ -2,6 +2,7 @@ package com.opa.opa_music;
 
 import lombok.Data;
 
+// Save video's 'videoId'
 @Data 
 public class Video {
     String url;
