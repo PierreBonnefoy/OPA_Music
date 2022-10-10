@@ -1,17 +1,22 @@
 .SearchSpace{
     display: block;
     background-color: #0b1727;
-    border: 5px solid;
+    border: 3px solid;
     border-radius: 3em;
     border-color: #ff0139;
-    font-size: 3em;
-    padding-left: 0.2em;
-    padding-right: 6em;
-    margin-top: 2em;
-    margin-bottom: 0.5em;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 50px auto 20px auto;
+    width: 40%;
+    height: 40px;
     color: #c0c0c1;
+}
+.SearchSpace:hover{
+    border: 7px double;
+    border-color: #ff0139;
+    margin-top: 46px;
+    margin-bottom: 16px;
 }
 
 #sea{
@@ -23,18 +28,50 @@
 
 #reg{
     position: absolute;
-    right: 5.5em;
+    right: 2%;
     top: 4.5em;
 }
 
 #log{
     position: absolute;
-    right: 5.5em;
+    right: 2%;
     top: 8em;
 }
 
-iframe{
-    margin-left: 10em;
-    margin-bottom: 6em;
-    border-radius: 3em;
+#musicList{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+    width: 85%;
+}
+
+#music{
+    margin: 30px 1%;
+    border-radius: 1em;
+    width: 30%;
+    height: 200px;
+    border-bottom : solid 5px #ff0139;
+    border-right : solid 5px #ff0139;
+}
+
+#music:hover{
+    border-bottom : solid 5px #c0c0c1;
+    border-right : solid 5px #c0c0c1;
+}
+
+span{
+    justify-content: center;   
+}
+
+#register{
+    background-color: #ff0139;
+    border-color: #ff0139;
+    color: #0b1727;
+}
+
+#register:hover{
+    background-color: #c0c0c1;
+    border-color: #c0c0c1;
+    color: #0b1727;
 }

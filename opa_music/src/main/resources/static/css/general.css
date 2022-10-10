@@ -4,17 +4,24 @@ body{
 }
 
 .button{
-    background-color: #ff0139;
+    background-color: #0b1727;
     border-radius: 3em;
-    border : 2px solid;
+    border : 3px solid;
+    border-color: #ff0139;
+    color: #ff0139;
+    padding: 0.5em 1.5em;
+    width: 150px;
+    font-weight: bold;
+    font-size: 15px;
+    /*border-radius: 6px;
+    */
+}
+
+.button:hover{
+    background-color: #0b1727;
     border-color: #c0c0c1;
     color: #c0c0c1;
-    padding-left: 1.5em;
-    padding-top: .5em;
-    padding-bottom: .5em;
-    padding-right: 1.5em;
-    font-weight: bold;
-    font-size: 1.25em;
+
 }
 
 img{
@@ -22,6 +29,7 @@ img{
     margin-top: 3em;
     margin-left: auto;
     margin-right: auto;
+    width: 50%;
 }
 
 
