@@ -22,6 +22,7 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+    // Method witch is allowing to save a user into the database
     @Override
     public Integer saveUser(User user) {
         String pwd = user.getPassword();
@@ -31,6 +32,8 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
         return user.getId();
     }
 
+    // Method wich is creating a spring usere and verify if the user is exitent in
+    // the database by his email
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<User> opt = userRepo.findUserByEmail(email);

@@ -18,6 +18,7 @@ public class UserController {
         return ("register");
     }
 
+    /// Redirect to the login page
     @GetMapping("/login")
     public String login() {
         return ("login");
@@ -31,6 +32,5 @@ public class UserController {
         model.addAttribute("msg", message);
         return "home";
     }
-
 
 }
