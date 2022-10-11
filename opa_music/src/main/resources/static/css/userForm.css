@@ -1,3 +1,7 @@
+body{
+    overflow:hidden;
+}
+
 h3{
     font-size: 25px;
     text-align: center;
@@ -7,6 +11,10 @@ h3{
 
 #log{
     margin: 30px auto 80px auto;
+}
+
+#reg{
+    margin: 40px auto 60px auto;
 }
 
 .errorMessage{
@@ -29,6 +37,8 @@ h3{
     margin: 50px auto;
     width: 30%;
     height: 600px;
+    
+    -webkit-animation: topScroll 0.8s;
 }
 
 form{
@@ -63,16 +73,10 @@ label{
 
 .textField:hover{
     border: 6px double;
-}
-
-.textField.field2:hover{
     width: 192px;
     height: 42px;
 }
 
-.checkList{
-    text-align: center;
-}
 
 
 #login{
@@ -108,3 +112,10 @@ hr{
     border-color: #c0c0c1;
     color: #0b1727;
 }
+
+@-webkit-keyframes topScroll {
+    0%  { margin-top: 150% }
+    10%  { margin-top: 150% }
+    80%  { margin-top: 50px }
+    100%  { margin-top: 50px }
+  }

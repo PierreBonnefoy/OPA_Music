@@ -15,15 +15,15 @@
             <input id="register" class="button" type="button" value="REGISTER"> 
         </a>
         <a th:href="@{/loginRedirect}" id="log" sec:authorize="isAnonymous()">
-            <input  class="button" type="button" value="LOG IN"> 
+            <input id="login" class="button" type="button" value="LOG IN"> 
         </a>
         <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
                 <input type="submit" value="Sign Out" />
         </form>
         
-        <form th:action="@{/fav}" method="post" sec:authorize="isAuthenticated()">
-            <input type="submit" value="Favorites" />
-    </form>
+        <a data-th-href="@{/addFav/{mail} (mail=${#httpServletRequest.remoteUser})}">
+            <input id="Fav" class="button" type="button" value="Favorites" sec:authorize="isAuthenticated()">
+        </a>
 
         <img src="/images/logo.svg">
         <form data-th-action="@{/search}" data-th-object="${search}" method="POST">
