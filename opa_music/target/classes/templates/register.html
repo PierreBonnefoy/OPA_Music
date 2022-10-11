@@ -11,7 +11,7 @@
 <body>
     <div class="form">
         <h3>User Registration</h3>
-        <form action="addUser" method="post">
+        <form th:action="@{/addUser}" method="post">
             <div><label>Name : </label><input class="textField field2" type="text" name="name"/></div>
             <div><label>Email : </label><input class="textField field2" type="text" name="email"/></div>
             <div><label>Password : </label><input class="textField field2" type="password" name="password"/></div>

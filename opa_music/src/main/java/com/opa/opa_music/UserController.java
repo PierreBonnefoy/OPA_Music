@@ -19,7 +19,7 @@ public class UserController {
     }
 
     /// Redirect to the login page
-    @GetMapping("/login")
+    @GetMapping("/loginRedirect")
     public String login() {
         return ("login");
     }
