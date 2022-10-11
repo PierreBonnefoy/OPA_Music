@@ -40,7 +40,7 @@ public class APIController {
         String type = "video";
         String part = "snippet";
         int maxResults = 12;
-        String key = "AIzaSyD5M5IzAQRkvydUZ12viKfkUzTwSa-BPAY";
+        String key = "AIzaSyDbX-pXMguUhzBsu4a71kIIBFGvyKcjhuY";
 
         // Erase content 
         videos = new ListVideo();
@@ -145,7 +145,12 @@ public class APIController {
     public String delFav(@PathVariable String link,@PathVariable String mail) {
 
         // Remove 'link' of 'videos'
-        videos.listVideo.removeIf(video -> (video.url.equals(link)));
+        for(Video video : videos.listVideo){
+            if(video.url.equals(link)){
+                videos.listVideo.remove(video);
+                break;
+            }
+        }
 
         try{
             // Clear fav file
