@@ -57,6 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                 // link to the page of login
                                 .and()
                                 .formLogin()
-                                .loginPage("/login");
+                                .loginPage("/login")
+                                .failureUrl("/loginRedirect");
         }
 }
