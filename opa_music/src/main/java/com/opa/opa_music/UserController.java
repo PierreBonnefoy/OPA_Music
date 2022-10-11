@@ -27,7 +27,7 @@ public class UserController {
     // Registration Form Handling
     @PostMapping("/addUser")
     public String addUser(@ModelAttribute User user, Model model) {
-        if (user.getId() != null && user.getEmail() != null && user.getName() != null && user.getPassword() != null) {
+        if (user.getEmail() != null && user.getName() != null && user.getPassword() != null) {
             Integer id = userService.saveUser(user);
             String message = "User " + id + " created successfully";
             model.addAttribute("msg", message);
