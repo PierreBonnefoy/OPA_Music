@@ -32,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                 // All Permissions : all pages wich are not in here are going to be
                                 // innaccessible without connexion
                                 .antMatchers("/", "/home", "/register", "/addUser", "/login", "/h2-console**",
-                                                "/css/**", "/js/**", "/images/**", "/search", "/loginForm")
+                                                "/css/**", "/js/**", "/images/**", "/search", "/loginRedirect")
                                 .permitAll()
 
                                 // Default page after a successfull connection

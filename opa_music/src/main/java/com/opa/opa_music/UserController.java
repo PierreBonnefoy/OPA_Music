@@ -30,7 +30,7 @@ public class UserController {
         Integer id = userService.saveUser(user);
         String message = "User " + id + " created successfully";
         model.addAttribute("msg", message);
-        return "home";
+        return ("redirect:/");
     }
 
 }

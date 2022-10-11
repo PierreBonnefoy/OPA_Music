@@ -11,14 +11,13 @@
         <link rel="shortcut icon" type="/image/png" href="/images/icon.png">
     </head>
     <body>
-        
         <a th:href="@{/register}" id="reg">
             <input id="register" class="button" type="button" value="REGISTER"> 
         </a>
         <a th:href="@{/loginRedirect}" id="log">
             <input  class="button" type="button" value="LOG IN"> 
         </a>
-
+        
         <img src="/images/logo.svg">
         <form data-th-action="@{/search}" data-th-object="${search}" method="POST">
             <input class="SearchSpace" type="text" id="search" data-th-field="*{search}" placeholder="Search">
