@@ -5,7 +5,7 @@ h2{
     width: 35%;
     margin: 100px auto;
     border-bottom : solid 2px #ffe74e;
-    -webkit-animation: bottomScroll2 3s;
+    animation: bottomScroll2 3s;
 }
 
 .SearchSpace{
@@ -21,7 +21,7 @@ h2{
     width: 40%;
     height: 40px;
     color: #c0c0c1;
-    -webkit-animation: opacity 3s;
+    animation: opacity 3s;
 }
 
 .SearchSpace:hover{
@@ -36,7 +36,7 @@ h2{
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 1em;
-    -webkit-animation: opacity 5s;
+    animation: opacity 5s;
 }
 
 #reg{
@@ -66,7 +66,7 @@ h2{
     left: 5%;
     top: 6em;
     overflow:hidden;
-    -webkit-animation: bottomScroll 3s;
+    animation: bottomScroll 3s;
 }
 
 #musicList{
@@ -75,7 +75,7 @@ h2{
     margin-right: auto;
     margin-bottom: 100px;
     width: 85%;
-    -webkit-animation: bottomScroll 3s;
+    animation: bottomScroll 3s;
 }
 
 #music{
@@ -138,7 +138,7 @@ span{
 }
 
 #login{
-    -webkit-animation: rightScroll 4s;
+    animation: rightScroll 4s;
 }
 
 #register{
@@ -146,7 +146,7 @@ span{
     border-color: #ff0139;
     color: #0b1727;
     
-    -webkit-animation: rightScroll 3s;
+    -animation: rightScroll 3s;
 }
 
 #register:hover{
@@ -160,7 +160,7 @@ span{
     border-color: #0b1727;
     color: #c0c0c1;
     
-    -webkit-animation: rightScroll 3s;
+    animation: rightScroll 3s;
 }
 
 #logout:hover{
@@ -170,28 +170,28 @@ span{
 }
 
 
-@-webkit-keyframes rightScroll {
+@keyframes rightScroll {
     0%  { margin-left: 150% }
     10%  { margin-left: 150% }
     80%  { margin-left: 0 }
     100%  { margin-left: 0 }
   }
 
-  @-webkit-keyframes bottomScroll {
+  @keyframes bottomScroll {
     0%  { margin-top: 150% }
     10%  { margin-top: 150% }
     80%  { margin-top: 0 }
     100%  { margin-top: 0 }
   }
 
-  @-webkit-keyframes bottomScroll2 {
+  @keyframes bottomScroll2 {
     0%  { margin-top: 150% }
     10%  { margin-top: 150% }
     80%  { margin-top: 100px }
     100%  { margin-top: 100px }
   }
 
-  @-webkit-keyframes opacity {
+  @keyframes opacity {
     0%  { opacity: 0 }
     10%  { opacity: 0 }
     80%  { opacity: 1 }

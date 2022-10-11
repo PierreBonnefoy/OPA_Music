@@ -38,7 +38,7 @@ h3{
     width: 30%;
     height: 600px;
     
-    -webkit-animation: topScroll 0.8s;
+    animation: topScroll 0.8s;
 }
 
 form{
@@ -113,7 +113,7 @@ hr{
     color: #0b1727;
 }
 
-@-webkit-keyframes topScroll {
+@keyframes topScroll {
     0%  { margin-top: 150% }
     10%  { margin-top: 150% }
     80%  { margin-top: 50px }
