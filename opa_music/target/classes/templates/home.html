@@ -21,7 +21,7 @@
                 <input type="submit" value="Sign Out" />
         </form>
         
-        <a data-th-href="@{/addFav/{mail} (mail=${#httpServletRequest.remoteUser})}">
+        <a data-th-href="@{/fav/{mail} (mail=${#httpServletRequest.remoteUser})}">
             <input id="Fav" class="button" type="button" value="Favorites" sec:authorize="isAuthenticated()">
         </a>
 
