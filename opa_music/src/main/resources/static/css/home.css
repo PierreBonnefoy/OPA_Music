@@ -146,7 +146,7 @@ span{
     border-color: #ff0139;
     color: #0b1727;
     
-    -animation: rightScroll 3s;
+    animation: rightScroll 3s;
 }
 
 #register:hover{
