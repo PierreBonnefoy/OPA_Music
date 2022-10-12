@@ -11,6 +11,7 @@
         <link rel="shortcut icon" type="/image/png" href="/images/icon.png">
     </head>
     <body>
+        <span sec:authorize="isAuthenticated()" th:text="${#authentication.getPrincipal().getUsername()}"></span>
         <a th:href="@{/register}" id="reg" sec:authorize="isAnonymous()">
             <input id="register" class="button" type="button" value="REGISTER"> 
         </a>

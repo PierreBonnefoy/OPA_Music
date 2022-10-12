@@ -35,12 +35,12 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
     // Method wich is creating a spring usere and verify if the user is exitent in
     // the database by his email
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<User> opt = userRepo.findUserByEmail(email);
+    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+        Optional<User> opt = userRepo.findUserByName(name);
         org.springframework.security.core.userdetails.User springUser = null;
 
         if (opt.isEmpty()) {
-            throw new UsernameNotFoundException("User with email :" + email + " not found.");
+            throw new UsernameNotFoundException("User with name :" + name + " not found.");
         } else {
             User user = opt.get();
             List<String> roles = user.getRoles();
@@ -50,7 +50,7 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
             }
 
             springUser = new org.springframework.security.core.userdetails.User(
-                    email,
+                    name,
                     user.getPassword(),
                     ga);
         }
