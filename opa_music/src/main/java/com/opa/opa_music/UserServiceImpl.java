@@ -32,6 +32,15 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
         return user.getId();
     }
 
+    // Method wich is returning true if username alreday took and false ever
+    @Override
+    public boolean isUsernameAlreadyTake(String name) {
+        if (userRepo.findUserByName(name).isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+
     // Method wich is creating a spring usere and verify if the user is exitent in
     // the database by his email
     @Override
