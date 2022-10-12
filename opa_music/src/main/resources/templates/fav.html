@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Home | OPAMusic</title>
+        <title>Favorites | OPAMusic</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/css/general.css">
@@ -11,6 +11,8 @@
         <link rel="shortcut icon" type="/image/png" href="/images/icon.png">
     </head>
     <body>
+        <span id="userName" sec:authorize="isAuthenticated()" th:text="${#authentication.getPrincipal().getUsername()}"></span>
+        
         <form id="out" th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
             <input id="logout" class="button" type="submit" value="Sign Out" />
         </form>
