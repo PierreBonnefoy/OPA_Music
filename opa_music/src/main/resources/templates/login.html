@@ -2,15 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
-        <title>User Login</title>
+        <title>Login</title>
         <link rel="stylesheet" href="/css/general.css">
         <link rel="stylesheet" href="/css/userForm.css">
     </head>
     <body>
         <div class="form">
-           <h3 id="log">Login</h3>
+            <input class="returnButton" type="button" onclick="window.location='/'" value="< return to home"/>
+            <h3 id="log">Login</h3>
             <div class="errorMessage" th:if="${param.error}">
-                Invalid username and password.
+                Invalid username or password.
             </div>
             <div class="errorMessage" th:if="${param.logout}">
                 You have been logged out.

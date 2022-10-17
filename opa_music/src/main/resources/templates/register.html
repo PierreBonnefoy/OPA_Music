@@ -3,14 +3,15 @@
 
 <head>
     <meta charset="ISO-8859-1">
-    <title>User Registration</title>
+    <title>Register</title>
     <link rel="stylesheet" href="/css/general.css">
     <link rel="stylesheet" href="/css/userForm.css">
 </head>
 
 <body>
     <div class="form">
-        <h3 id="reg">User Registration</h3>
+        <input class="returnButton" type="button" onclick="window.location='/'" value="< return to home"/>
+        <h3 id="reg">Register</h3>
         <form th:action="@{/addUser}" method="post">
             <div><label>Name : </label><input class="textField" type="text" name="name" maxlength="25" minlength="2" required="required"/></div>
             <div><label>Email : </label><input class="textField" type="text" name="email" minlength="2" required="required"/></div>

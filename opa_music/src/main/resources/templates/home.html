@@ -27,7 +27,8 @@
             <input id="favorite" class="button" type="button" value="⭐️ Favorites" sec:authorize="isAuthenticated()">
         </a>
 
-        <img src="/images/logo.svg">
+        <img id="logo" src="/images/logo.svg" onclick="window.location='/'">
+
         <form data-th-action="@{/search}" data-th-object="${search}" method="POST">
             <input class="SearchSpace" type="text" id="search" data-th-field="*{search}" placeholder="Search">
             <input id="sea" class="button" type="submit" value="Search">
