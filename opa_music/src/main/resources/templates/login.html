@@ -10,11 +10,8 @@
         <div class="form">
             <input class="returnButton" type="button" onclick="window.location='/'" value="< return to home"/>
             <h3 id="log">Login</h3>
-            <div class="errorMessage" th:if="${param.error}">
-                Invalid username or password.
-            </div>
-            <div class="errorMessage" th:if="${param.logout}">
-                You have been logged out.
+            <div class="errorMessage" th:if="param.error">
+                [[${error}]]
             </div>
             <form th:action="@{/login}" method="post">
                 <div><label> User Name : </label><input class="textField" type="text" name="username" maxlength="25" minlength="2" required="required"/> </div>
