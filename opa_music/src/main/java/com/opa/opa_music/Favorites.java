@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.data.repository.query.Param;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
