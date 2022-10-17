@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class APIController {
     
     ListVideo videos = new ListVideo();
+    Search searchSpace = new Search();
 
     @Inject
     FavoritesRepository favoritesRepo;
@@ -33,7 +34,7 @@ public class APIController {
     // Initialization of Search Object and ListVideo Object for the communication between java and html
     @GetMapping("/")
     public String home(Model model){
-        model.addAttribute("search", new Search());
+        model.addAttribute("search", searchSpace);
         model.addAttribute("videos", videos.listVideo);
         return "home";
     }
@@ -51,7 +52,7 @@ public class APIController {
 
         // Erase content 
         videos = new ListVideo();
-        
+        searchSpace.search = search;
         // Replace all whitespace by '+'
         search = search.replaceAll("\\s", "+");
 
@@ -103,6 +104,7 @@ public class APIController {
     public String fav(@PathVariable String mail,Model model){
 
         // Erase content
+        searchSpace = new Search();
         videos = new ListVideo();
 
         // Load favorites in 'videos'
@@ -111,7 +113,7 @@ public class APIController {
         }
 
         // Pass attributes to /fav
-        model.addAttribute("search", new Search());
+        model.addAttribute("search", searchSpace);
         model.addAttribute("videos", videos.listVideo);
         return "/fav";
     }
@@ -128,6 +130,7 @@ public class APIController {
     @GetMapping("/clear")
     public String clear(){
         // Erase content
+        searchSpace = new Search();
         videos = new ListVideo();
         return ("redirect:/");
     }

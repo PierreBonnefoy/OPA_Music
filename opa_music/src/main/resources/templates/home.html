@@ -27,12 +27,12 @@
             <input id="favorite" class="button" type="button" value="⭐️ Favorites" sec:authorize="isAuthenticated()">
         </a>
 
-        <a data-th-href="@{/clear}">
+        <a class="return" data-th-href="@{/clear}">
             <img id="logo" src="/images/logo.svg" >
         </a>
 
         <form data-th-action="@{/search}" data-th-object="${search}" method="POST">
-            <input class="SearchSpace" type="text" id="search" data-th-field="*{search}" placeholder="Search">
+            <input class="SearchSpace" type="text" id="search" data-th-field="*{search}" placeholder="Search" data-th-value = "${search.search}">
             <input id="sea" class="button" type="submit" value="Search">
         </form>
         <br>
