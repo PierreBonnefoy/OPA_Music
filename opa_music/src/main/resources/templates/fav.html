@@ -16,8 +16,10 @@
         <form id="out" th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
             <input id="logout" class="button" type="submit" value="Sign Out" />
         </form>
-
-        <img id="logo" src="/images/logo.svg" onclick="window.location='/'">
+        <a data-th-href="@{/clear}">
+            <img id="logo" src="/images/logo.svg" >
+        </a>
+        
         
         <form data-th-action="@{/search}" data-th-object="${search}" method="POST">
             <input class="SearchSpace" type="text" id="search" data-th-field="*{search}" placeholder="Search">

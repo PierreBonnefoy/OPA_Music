@@ -2,6 +2,7 @@ package com.opa.opa_music;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.Console;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -11,7 +12,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import javax.inject.Inject;
+
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +26,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class APIController {
     
     ListVideo videos = new ListVideo();
+
+    @Inject
+    FavoritesRepository favoritesRepo;
 
     // Initialization of Search Object and ListVideo Object for the communication between java and html
     @GetMapping("/")
@@ -83,22 +90,10 @@ public class APIController {
     // Save a fav
     @GetMapping("/addFav/{link}&{mail}")
     public String addFav(@PathVariable String link,@PathVariable String mail) {
-        try{
-            // Create the file if not exist
-            File file = new File("./"+mail+".txt");
-            if(!file.exists()){
-                file.createNewFile();
-            }
 
-            // Add 'link' in fav file
-            FileWriter fw = new FileWriter("./"+mail+".txt",true);
-            BufferedWriter write = new BufferedWriter(fw);
-            write.write(link+"\n");
-            write.close();
+        Favorites fav = new Favorites(mail,link);
 
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        favoritesRepo.save(fav);
 
         return "redirect:/";
     }
@@ -106,32 +101,13 @@ public class APIController {
     // Redirects to Favorites
     @GetMapping("/fav/{mail}")
     public String fav(@PathVariable String mail,Model model){
-        String line;
-        try {
-            // Create file if not exist
-            File file = new File("./"+mail+".txt");
-            if(!file.exists()){
-                file.createNewFile();
-            }
 
-            // Open reder of fav file
-            FileReader fr = new FileReader("./"+mail+".txt");
-            BufferedReader read = new BufferedReader(fr);
-            
-            // Erase content
-            videos = new ListVideo();
-            
-            // Load fav file in 'videos'
-            line = read.readLine();
-            while(line!=null){
-                videos.listVideo.add(new Video(line));
-                line = read.readLine();
-            }
+        // Erase content
+        videos = new ListVideo();
 
-            read.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        // Load favorites in 'videos'
+        for(Favorites i : favoritesRepo.findAllByUser(mail)){
+            videos.listVideo.add(new Video(i.url));
         }
 
         // Pass attributes to /fav
@@ -144,30 +120,16 @@ public class APIController {
     @GetMapping("/delFav/{link}&{mail}")
     public String delFav(@PathVariable String link,@PathVariable String mail) {
 
-        // Remove 'link' of 'videos'
-        for(Video video : videos.listVideo){
-            if(video.url.equals(link)){
-                videos.listVideo.remove(video);
-                break;
-            }
-        }
+        favoritesRepo.deleteByUserAndUrl(mail, link);
 
-        try{
-            // Clear fav file
-            new FileWriter("./"+mail+".txt",false).close();
-            
-            // Write 'videos' in fav file
-            FileWriter fw = new FileWriter("./"+mail+".txt",true);
-            BufferedWriter write = new BufferedWriter(fw);
-            for (Video v :videos.listVideo){
-                write.write(v.url+"\n");
-            }
-            write.close();
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
         return ("redirect:/fav/"+mail);
+    }
+
+    @GetMapping("/clear")
+    public String clear(){
+        // Erase content
+        videos = new ListVideo();
+        return ("redirect:/");
     }
 
 }

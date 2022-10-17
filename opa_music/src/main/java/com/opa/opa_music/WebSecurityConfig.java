@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                 .antMatchers("/", "/home", "/register", "/addUser", "/login", "/h2-console**",
                                                 "/css/**", "/js/**", "/images/**", "/search", "/loginRedirect",
                                                 "/addFav/{link}&{mail}", "/fav/{mail}", "/fav", "/delFav/{link}&{mail}",
-                                                "/logout")
+                                                "/logout", "/clear")
                                 .permitAll()
 
                                 // Default page after a successfull connection
@@ -46,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                 // Default page after a successful logout
                                 .and()
                                 .logout()
-                                .logoutSuccessUrl("/")
+                                .logoutSuccessUrl("/clear")
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 
                                 // Default page after a access denied (role not allowed to go here)
