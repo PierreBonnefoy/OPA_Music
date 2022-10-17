@@ -6,10 +6,10 @@
 - Aloys Lana
 
 ## Choice of the Subject
-We initialy chose to realize a streaming platform for music using the Youtube 
-API. But, by the fact that we can't only retrieve the audio only version of 
-Youtube videos, the project became a alternative youtube client in wich you can
-search every video on Youtube and add it to your favorites to keep them safe.
+We initially chose to realize a streaming platform for music using the Youtube 
+API. However, we could not extract music from all Youtube videos, 
+so the project became an alternative youtube client where you can
+search every video on Youtube and add it to your favorites to keep it safe.
 
 ## Installation Instructions
 ### Prerequesites
@@ -28,29 +28,29 @@ You need to have installed on your laptop the following softwares :
 
 ### Launching Instructions
 - Clone the Git Repository by using : `git clone https://github.com/UJM-INFO/2022-pwa-e.git`
-- Now go to the repository where you clone : `cd 2022-pwa-e.git`
+- Then go to the repository where you clone : `cd 2022-pwa-e.git`
 - Launch VS Code : `code .`
 - Wait for VS Code to Open the Java Project
 - Go to the Spring Boot Dashboard in the left menu
-- Click on the Lauching Button
+- Click on the Launching Button
 - Open the Web Browser of your choice
 - Go to the URL : `localhost:8080`
 - You got it.
 
 
 ## Actual Project State
-Actually the project is not finished, we only implemented the Spring Part and it remains all of Vue JS part to make it more dynamic.
+For now, the project is not finished. We have only implemented the Spring part and we still have to do the Vue JS part to make it more dynamic.
 
 ### Already implemented features
-- The Authentication System and User Database is fully finished
-- The Youtube API communication is finished
+- The Authentication System and User Database is fully finished.
+- The Youtube API communication is finished.
 - The Favourites System is operationnal but we want to enhance it by adding a multiplaylist system.
-- The design of the application is realized (Can be change by the Vue JS implementation)
+- The design of the application has been done (and can be change by the Vue JS implementation).
 
 ## Ressources
-### Tutorial that have been followed
+### Tutorials we have followed
 - https://javatechonline.com/how-to-implement-security-in-spring-boot-using-userdetailsservice/
-- Our teacher Remi Emmonet slides : https://learn.heeere.com/2022-pwa-2e95/
+- Slides of our professor Rémi Emonet : https://learn.heeere.com/2022-pwa-2e95/
 - Spring Boot Documentation : https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/
 - Java Documentation : https://docs.oracle.com/en/java/
 - MDN Documentation : https://developer.mozilla.org/fr/
