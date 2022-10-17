@@ -8,7 +8,6 @@
     </head>
     <body>
         <div class="form">
-            <input class="returnButton" type="button" onclick="window.location='/'" value="< return to home"/>
             <h3 id="log">Login</h3>
             <div class="errorMessage" th:if="param.error">
                 [[${error}]]
@@ -22,6 +21,7 @@
                 <a id="registerLink" th:href="@{/register}">
                     <input class="button" id="register" type="button" value="Register">
                 </a>
+            <input class="returnButton" type="button" onclick="window.location='/'" value="<  return to home page"/>
         </div>
 
     </body>
