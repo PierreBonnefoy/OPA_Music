@@ -24,6 +24,13 @@ public class UserController {
         return ("login");
     }
 
+    @GetMapping("/loginError")
+    public String logError(Model model) {
+        model.addAttribute("error", "Bad Credentials");
+        // System.out.println("EREUR");
+        return ("login");
+    }
+
     // Registration Form Handling
     @PostMapping("/addUser")
     public String addUser(@ModelAttribute User user, Model model) {

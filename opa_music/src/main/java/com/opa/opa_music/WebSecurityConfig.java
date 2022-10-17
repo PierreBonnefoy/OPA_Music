@@ -34,13 +34,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                 .antMatchers("/", "/home", "/register", "/addUser", "/login", "/h2-console**",
                                                 "/css/**", "/js/**", "/images/**", "/search", "/loginRedirect",
                                                 "/addFav/{link}&{mail}", "/fav/{mail}", "/fav", "/delFav/{link}&{mail}",
-                                                "/logout", "/clear")
+                                                "/logout", "/clear", "/loginError")
                                 .permitAll()
 
                                 // Default page after a successfull connection
                                 .anyRequest().authenticated()
-                                .and()
-                                .formLogin()
                                 // .defaultSuccessUrl("/", true)
 
                                 // Default page after a successful logout
@@ -58,6 +56,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                 .and()
                                 .formLogin()
                                 .loginPage("/login")
-                                .failureUrl("/loginRedirect");
+                                .failureUrl("/loginError");
         }
 }
