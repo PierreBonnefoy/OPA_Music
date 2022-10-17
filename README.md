@@ -37,6 +37,10 @@ You need to have installed on your laptop the following softwares :
 - Go to the URL : `localhost:8080`
 - You got it.
 
+## System Architecture
+### Entity-Association Diagram
+![Texte alternatif](opa_music/src/main/resources/static/images/entity_association.png)
+
 
 ## Actual Project State
 For now, the project is not finished. We have only implemented the Spring part and we still have to do the Vue JS part to make it more dynamic.
