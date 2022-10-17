@@ -47,3 +47,11 @@ Actually the project is not finished, we only implemented the Spring Part and it
 - The Favourites System is operationnal but we want to enhance it by adding a multiplaylist system.
 - The design of the application is realized (Can be change by the Vue JS implementation)
 
+## Ressources
+### Tutorial that have been followed
+- https://javatechonline.com/how-to-implement-security-in-spring-boot-using-userdetailsservice/
+- Our teacher Remi Emmonet slides : https://learn.heeere.com/2022-pwa-2e95/
+- Spring Boot Documentation : https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/
+- Java Documentation : https://docs.oracle.com/en/java/
+- MDN Documentation : https://developer.mozilla.org/fr/
+- Google Youtube API Documentation : https://developers.google.com/youtube/v3
