@@ -119,6 +119,7 @@ h2{
     border : solid 3px #ffe74e;
 }
 
+
 #delFavButton{
     position: relative;
     margin-left: -7%;
@@ -128,6 +129,17 @@ h2{
 #delFavButton:hover{
     background-color: #c0c0c1;
     border : solid 3px #c0c0c1;
+}
+
+#playlistChoice {
+    position: fixed;
+    width: 33%;
+    background-color: #182c47;
+    border: solid 2px #c0c0c1;
+    margin-left: 31%;
+    padding: 20px;
+    text-align: center;
+    z-index: 1;
 }
 
 span{

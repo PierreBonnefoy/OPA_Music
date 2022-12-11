@@ -16,7 +16,7 @@
         <form id="out" th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
             <input id="logout" class="button" type="submit" value="Sign Out" />
         </form>
-        <a data-th-href="@{/clear}">
+        <a class="return" data-th-href="@{/clear}">
             <img id="logo" src="/images/logo.svg" >
         </a>
         
