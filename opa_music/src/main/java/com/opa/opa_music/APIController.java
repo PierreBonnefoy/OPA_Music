@@ -134,7 +134,7 @@ public class APIController {
     public String homeVue(Model model){
         model.addAttribute("search", searchSpace);
         model.addAttribute("videos", videos.listVideo);
-        return "redirect:/vue/app.html";
+        return "redirect:/vue/home.html";
     }
 
     @RequestMapping("/vue/search")
