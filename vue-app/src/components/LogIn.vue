@@ -1,0 +1,34 @@
+<script setup>
+
+</script>
+
+<template>
+    <!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+        <head>
+            <title>Login</title>
+            <link rel="stylesheet" href="/css/general.css">
+            <link rel="stylesheet" href="/css/userForm.css">
+        </head>
+        <body>
+            <div class="form">
+                <h3 id="log">Login</h3>
+                <div class="errorMessage" th:if="param.error">
+                    [[${error}]]
+                </div>
+                <form th:action="@{/login}" method="post">
+                    <div><label> User Name : </label><input class="textField" type="text" name="username" maxlength="25" minlength="2" required="required"/> </div>
+                    <div><label> Password : </label><input class="textField" type="password" name="password" minlength="2" required="required"/> </div>
+                    <div><input class="button" id="login" type="submit" value="Sign In"/></div>
+                </form>
+                <hr>
+                    <a id="registerLink" th:href="@{/register}">
+                        <input class="button" id="register" type="button" value="Register">
+                    </a>
+                <input class="returnButton" type="button" onclick="window.location='/'" value="<  return to home page"/>
+            </div>
+
+        </body>
+    </html>
+</template>

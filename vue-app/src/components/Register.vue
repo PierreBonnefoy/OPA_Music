@@ -1,0 +1,33 @@
+<script setup>
+
+</script>
+
+<template>
+    <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/userForm.css">
+</head>
+
+<body>
+    <div class="form">
+        <h3 id="reg">Register</h3>
+        <div class="errorMessage" th:text="${msg}"></div>
+        <form th:action="@{/addUser}" method="post">
+            <div><label>Name : </label><input class="textField" type="text" name="name" maxlength="25" minlength="2" required="required"/></div>
+            <div><label>Email : </label><input class="textField" type="text" name="email" minlength="2" required="required"/></div>
+            <div><label>Password : </label><input class="textField" type="password" name="password" minlength="2" required="required"/></div>
+
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <input class="button" id="login" type="submit" value="Register"/>
+        </form>
+        <input class="returnButton" type="button" onclick="window.location='/'" value="<  return to home page"/>
+    </div>
+</body>
+
+</html>
+</template>

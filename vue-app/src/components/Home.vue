@@ -1,0 +1,72 @@
+<script setup>
+
+</script>
+
+<template>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Home | OPAMusic</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/general.css">
+        <link rel="stylesheet" href="/css/home.css">
+        <link rel="shortcut icon" type="/image/png" href="/images/icon.png">
+    </head>
+    <body>
+        <div id="mainPage">
+
+            <a class="return" data-th-href="@{/clear}">
+                <img id="logo" src="../assets/images/logo.svg" >
+            </a>
+
+
+             <!-- Playlist menu 
+            <div id="playlistChoice" v-show="displayMenu">
+                <input type="button" value="X" @click="displayMenu = !displayMenu" /> 
+                
+                <h3>Choose a playlist</h3>
+                
+                <form>
+                    <div v-for="playlist in playlists" :content="playlist">
+                        <input type="checkbox" name={{playlist}}/>
+                        <label for={{playlist}}>{{playlist}}</label>
+                    </div>
+                    <p>{{selectedPlaylists}}</p>
+
+                    <a>
+                    <input type="button" value="add" @click="displayMenu = !displayMenu" /> 
+                    </a>
+                </form>
+
+                <hr>
+                <div>
+                    <h3>Create a new playlist : {{newPlaylist}}</h3>
+                    <input v-bind:value="newPlaylist" v-model="newPlaylist" type="text" v-on:keyup.enter="createPlaylist">
+                    <input type="button" value="Create" @click="createPlaylist" v-if="newPlaylist != ''"/>
+                </div>
+            </div>-->
+
+
+
+            <form data-th-action="@{/search}" data-th-object="${search}" method="POST">
+                <input class="SearchSpace" type="text" id="search" data-th-field="*{search}" placeholder="Search" data-th-value = "${search.search}">
+                <input id="sea" class="button" type="submit" value="Search">
+            </form>
+
+            <br>
+            <!-- Load all videos -->
+            <div id="musicList">
+                <span data-th-each="v : ${videos}">
+                    <iframe id="music" width="420" height="315" data-th-src="'http://www.youtube.com/embed/' + ${v.url} + '?showinfo=0&modestbranding=1'" frameborder="0" allowfullscreen><br></iframe>
+
+                    <!-- data-th-href="@{/addFav/{link}&{mail} (link=${v.url},mail=${#httpServletRequest.remoteUser})}" -->
+                    <a id="addFav">
+                        <input id="addFavButton" class="button" type="button" value="⭐️" sec:authorize="isAuthenticated()" @click="displayMenu = !displayMenu">
+                    </a>
+                </span>
+            </div>
+        </div>
+    </body>
+
+</template>

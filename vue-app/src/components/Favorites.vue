@@ -1,0 +1,46 @@
+<script setup>
+
+</script>
+
+<template>
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <title>Favorites | OPAMusic</title>
+            <meta name="description" content="">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="/css/general.css">
+            <link rel="stylesheet" href="/css/home.css">
+            <link rel="shortcut icon" type="/image/png" href="/images/icon.png">
+        </head>
+        <body>
+            <span id="userName" sec:authorize="isAuthenticated()" th:text="${#authentication.getPrincipal().getUsername()}"></span>
+            
+            <form id="out" th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+                <input id="logout" class="button" type="submit" value="Sign Out" />
+            </form>
+            <a class="return" data-th-href="@{/clear}">
+                <img id="logo" src="../assets/images/logo.svg" >
+            </a>
+            
+            
+            <form data-th-action="@{/search}" data-th-object="${search}" method="POST">
+                <input class="SearchSpace" type="text" id="search" data-th-field="*{search}" placeholder="Search">
+                <input id="sea" class="button" type="submit" value="Search">
+            </form>
+            <br>
+            <h2>Favorites</h2>
+            <!-- Load all videos -->
+            <div id="musicList">
+                <span data-th-each="v : ${videos}">
+                    <iframe id="music" width="420" height="315" data-th-src="'http://www.youtube.com/embed/' + ${v.url} + '?showinfo=0&modestbranding=1'" frameborder="0" allowfullscreen><br></iframe>
+                    <a id="delFav" data-th-href="@{/delFav/{link}&{mail} (link=${v.url},mail=${#httpServletRequest.remoteUser})}">
+                        <input id="delFavButton" class="button" type="button" value="🗑️" sec:authorize="isAuthenticated()">
+                    </a>
+                </span>
+            </div>      
+        </body>
+    </html>
+</template>
