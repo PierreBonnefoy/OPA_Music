@@ -7,3 +7,4 @@
         <RegisterView />
     </main>
 </template>
+

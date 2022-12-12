@@ -2,10 +2,12 @@ package com.opa.opa_music;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -31,10 +33,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 http.authorizeRequests()
                                 // All Permissions : all pages wich are not in here are going to be
                                 // innaccessible without connexion
-                                .antMatchers("/", "/home", "/register", "/addUser", "/login", "/h2-console**",
+                                .antMatchers( "/", "/home", "/register", "/addUser", "/login", "/h2-console**",
                                                 "/css/**", "/js/**", "/images/**", "/search", "/loginRedirect",
                                                 "/addFav/{link}&{mail}", "/fav/{mail}", "/fav", "/delFav/{link}&{mail}",
-                                                "/logout", "/clear", "/loginError","/lib/**","/vue/**", "/api/*")
+                                                "/logout", "/clear", "/loginError","/lib/**","/vue/**", "/api/*", "/api/register")
                                 .permitAll()
 
                                 // Default page after a successfull connection
@@ -57,5 +59,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                 .formLogin()
                                 .loginPage("/login")
                                 .failureUrl("/loginError");
+                                http.csrf().ignoringAntMatchers("/api/**");
         }
 }
