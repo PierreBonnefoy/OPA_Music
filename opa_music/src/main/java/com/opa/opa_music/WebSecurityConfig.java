@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                 .antMatchers("/", "/home", "/register", "/addUser", "/login", "/h2-console**",
                                                 "/css/**", "/js/**", "/images/**", "/search", "/loginRedirect",
                                                 "/addFav/{link}&{mail}", "/fav/{mail}", "/fav", "/delFav/{link}&{mail}",
-                                                "/logout", "/clear", "/loginError")
+                                                "/logout", "/clear", "/loginError","/lib/**","/vue/**")
                                 .permitAll()
 
                                 // Default page after a successfull connection
