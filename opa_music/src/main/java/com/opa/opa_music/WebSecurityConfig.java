@@ -1,8 +1,10 @@
 package com.opa.opa_music;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -22,6 +24,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         @Autowired
         private BCryptPasswordEncoder encoder;
 
+        @Bean
+        protected AuthenticationManager authenficationManager() throws Exception{
+                return super.authenticationManager();
+        }
+
         @Override
         protected void configure(AuthenticationManagerBuilder auth) throws Exception {
                 auth.userDetailsService(uds).passwordEncoder(encoder);
@@ -36,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                 .antMatchers( "/", "/home", "/register", "/addUser", "/login", "/h2-console**",
                                                 "/css/**", "/js/**", "/images/**", "/search", "/loginRedirect",
                                                 "/addFav/{link}&{mail}", "/fav/{mail}", "/fav", "/delFav/{link}&{mail}",
-                                                "/logout", "/clear", "/loginError","/lib/**","/vue/**", "/api/*", "/api/register")
+                                                "/logout", "/clear", "/loginError","/lib/**","/vue/**", "/api/**")
                                 .permitAll()
 
                                 // Default page after a successfull connection

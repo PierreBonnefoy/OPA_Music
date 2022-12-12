@@ -2,11 +2,15 @@ package com.opa.opa_music;
 
 
 import org.apache.logging.log4j.message.Message;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 import io.micrometer.core.instrument.util.IOUtils;
 
@@ -21,6 +25,8 @@ public class RESTController {
     @Autowired
     private IUserService userService;
     //Returning all users
+    @Autowired
+    private AuthenticationManager authenticationManager;
     @RequestMapping("/users")
     public List<User> fetchUsers(){
         
@@ -33,7 +39,17 @@ public class RESTController {
             Integer id = userService.saveUser(user);
             return new ResponseEntity<>(1, HttpStatus.OK);
         }
-        return new ResponseEntity<>(0, HttpStatus.CONFLICT);
+        return new ResponseEntity<>(0, HttpStatus.OK);
+    }
+
+    @RequestMapping("/loginVue")
+    public ResponseEntity<Integer> doLogin(@RequestBody User user){
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getName(), user.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        if(authentication.isAuthenticated()){
+            return new ResponseEntity<>(1, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(0, HttpStatus.BAD_GATEWAY);
     }
 
     /*@PostMapping("/register")
