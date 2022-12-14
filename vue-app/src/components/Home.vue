@@ -52,6 +52,9 @@ import '../assets/css/home.css';
                 <a id="addfavvue">
                     <input id="addFavButton" class="button" type="button" value="⭐️" @click="addfavvue(vi)">
                 </a>
+                <a>
+                    <input id="addPlaylistButton" class="button blue" type="button" value="▶">
+                </a>
             </span>
         </div>
     </body>
