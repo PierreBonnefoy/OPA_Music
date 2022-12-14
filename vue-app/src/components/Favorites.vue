@@ -16,11 +16,8 @@
             <link rel="shortcut icon" type="/image/png" href="/images/icon.png">
         </head>
         <body>
-            <span id="userName" sec:authorize="isAuthenticated()" th:text="${#authentication.getPrincipal().getUsername()}"></span>
-            
-            <form id="out" th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
-                <input id="logout" class="button" type="submit" value="Sign Out" />
-            </form>
+            <span>{{username}}</span>
+            <input v-if="logged"  @click="logout" id="logout" class="button" type="submit" value="Sign Out" />
             <a class="return" data-th-href="@{/clear}">
                 <img id="logo" src="../assets/images/logo.svg" >
             </a>
@@ -44,3 +41,26 @@
         </body>
     </html>
 </template>
+
+<script>
+    
+export default {
+    data() {
+        return {
+            username: localStorage.getItem("username"),
+            logged: localStorage.getItem("logged"),
+        };
+    },
+
+    
+  
+    methods: {
+        logout(){
+            localStorage.removeItem('token')
+            localStorage.removeItem('username')
+            localStorage.removeItem('logged')
+            this.$router.push("/login")
+        },
+    },
+}
+</script>

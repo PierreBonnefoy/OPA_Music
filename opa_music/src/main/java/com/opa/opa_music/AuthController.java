@@ -40,21 +40,18 @@ public class AuthController {
                 produces = MediaType.APPLICATION_JSON_VALUE )
     @ResponseBody
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest){
-        //System.out.println(loginRequest.getUsername());
-        //System.out.println(loginRequest.getPassword());
+
 
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
-        System.out.println("GET INFORMATIONS");
+       
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        System.out.println("Security Holder");
-        System.out.println(authentication);
+
 
         String jwt = jwtUtils.generateJwtToken(authentication);
 
-        System.out.println("JWT TOKEN CREATED");
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 

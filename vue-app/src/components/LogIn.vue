@@ -18,9 +18,7 @@ import "../assets/css/userForm.css"
                     <div><input class="button" id="login" type="submit" value="Sign In"></div>
                 </form>
                 <hr>
-                    <a id="registerLink" th:href="@{/register}">
-                        <input class="button" id="register" type="button" value="Register">
-                    </a>
+                    <router-link to="/register" class="button" id="register">Register</router-link>
                     <router-link to="/" class="returnButton">Return to home page</router-link>
             </div>
 
