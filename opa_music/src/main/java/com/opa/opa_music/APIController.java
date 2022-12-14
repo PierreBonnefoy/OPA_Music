@@ -9,6 +9,7 @@ import java.net.URLConnection;
 
 import javax.inject.Inject;
 
+import org.hibernate.query.criteria.internal.expression.function.SubstringFunction;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,6 +61,8 @@ public class APIController {
             BufferedReader read = new BufferedReader(new InputStreamReader(con.getInputStream()));
             StringBuilder sb = new StringBuilder();
             String line;
+            String link;
+
             while((line = read.readLine())!=null){
                 sb.append(line + "\n");
             }
@@ -68,7 +71,8 @@ public class APIController {
             // Select 'videoId' of the first 'maxResults' videos and add it to 'videos'
             JSONObject jObject = new JSONObject(sb.toString());
             for(int i=0;i<maxResults;i++){
-                videos.listVideo.add(new Video(jObject.getJSONArray("items").getJSONObject(i).getJSONObject("id").get("videoId").toString()));
+                link = jObject.getJSONArray("items").getJSONObject(i).getJSONObject("id").get("videoId").toString();
+                videos.listVideo.add(new Video(link));
             }
             
 
@@ -86,7 +90,7 @@ public class APIController {
     @GetMapping("/addFav/{link}&{mail}")
     public String addFav(@PathVariable String link,@PathVariable String mail) {
 
-        Favorites fav = new Favorites(mail,link);
+        Favorites fav = new Favorites(mail,"http://www.youtube.com/embed/"+link+"?showinfo=0&modestbranding=1");
 
         favoritesRepo.save(fav);
 
@@ -103,7 +107,7 @@ public class APIController {
 
         // Load favorites in 'videos'
         for(Favorites i : favoritesRepo.findAllByUser(mail)){
-            videos.listVideo.add(new Video(i.url));
+            videos.listVideo.add(new Video(i.url.substring(29)));
         }
 
         // Pass attributes to /fav
@@ -116,7 +120,7 @@ public class APIController {
     @GetMapping("/delFav/{link}&{mail}")
     public String delFav(@PathVariable String link,@PathVariable String mail) {
 
-        favoritesRepo.deleteByUserAndUrl(mail, link);
+        favoritesRepo.deleteByUserAndUrl(mail, "http://www.youtube.com/embed/"+link);
 
         return ("redirect:/fav/"+mail);
     }

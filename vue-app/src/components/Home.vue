@@ -68,8 +68,8 @@ import '../assets/css/home.css';
             <span id="#musicList" v-for="vi in videos">
                 <iframe id="music" :src = "vi" width="420" height="315" frameborder="0" allowfullscreen><br></iframe>
                 
-                <a id="addFav">
-                    <input id="addFavButton" class="button" type="button" value="⭐️" @click="displayMenu = !displayMenu">
+                <a id="addfavvue">
+                    <input id="addFavButton" class="button" type="button" value="⭐️" @click="addfavvue(vi)">
                 </a>
             </span>
         </div>
@@ -117,6 +117,18 @@ export default {
                     this.videos.push("http://www.youtube.com/embed/" + json.items[i].id.videoId+ "?showinfo=0&modestbranding=1")
             }})
         },
+        async addfavvue(v){
+            const req = await fetch('http://localhost:8080/api/addfavvue', {
+                method: 'POST',
+                headers: {
+                    "Content-Type":'application/json',
+                },
+                body: JSON.stringify({
+                    user : this.username,
+                    url : v,
+                })
+            })
+        }
     },
 }
 
