@@ -17,46 +17,27 @@ import '../assets/css/home.css';
     <div class="wrapper">
 
       <nav>
-        <RouterLink v-if="!logged" id=reg class=button to="/register">Register</RouterLink>
-        <RouterLink v-if="!logged" id=log class=button to="/logIn">Log In</RouterLink>
-        <RouterLink v-if="logged" id=fav class=button to="/favorites">Favorites</RouterLink>
+        <div id="reg">
+            <RouterLink v-if="!logged" id=register class=button to="/register">REGISTER</RouterLink>
+        </div>
+        <div id="log">
+            <RouterLink v-if="!logged" id=login class=button to="/logIn">LOG_IN</RouterLink>
+        </div>
+        <div id="favButton">
+            <RouterLink v-if="logged" id=favorite class=button to="/favorites">⭐️ Favorites</RouterLink>
+        </div>
       </nav>
     </div>
     </header>
     <body>
         <div id="mainPage">
-            <span>{{username}}</span>
+            <span id="userName">{{username}}</span>
             <a class="return">
                 <img id="logo" src="../assets/images/logo.svg" >
             </a>
 
-            <input v-if="logged"  @click="logout" id="logout" class="button" type="submit" value="Sign Out" />
+            <div id="out"><input v-if="logged"  @click="logout" id="logout" class="button" type="submit" value="Sign Out" /></div>
 
-             <!-- Playlist menu 
-            <div id="playlistChoice" v-show="displayMenu">
-                <input type="button" value="X" @click="displayMenu = !displayMenu" /> 
-                
-                <h3>Choose a playlist</h3>
-                
-                <form>
-                    <div v-for="playlist in playlists" :content="playlist">
-                        <input type="checkbox" name={{playlist}}/>
-                        <label for={{playlist}}>{{playlist}}</label>
-                    </div>
-                    <p>{{selectedPlaylists}}</p>
-
-                    <a>
-                    <input type="button" value="add" @click="displayMenu = !displayMenu" /> 
-                    </a>
-                </form>
-
-                <hr>
-                <div>
-                    <h3>Create a new playlist : {{newPlaylist}}</h3>
-                    <input v-bind:value="newPlaylist" v-model="newPlaylist" type="text" v-on:keyup.enter="createPlaylist">
-                    <input type="button" value="Create" @click="createPlaylist" v-if="newPlaylist != ''"/>
-                </div>
-            </div>-->
 
             <form v-on:submit.prevent="research">
                 <input class="SearchSpace" type="text" id="search" placeholder="Search" v-model="search" v-value ="search"/>

@@ -16,14 +16,14 @@
 
 <body>
     <div class="form">
-        <h3 id="reg">Register</h3>
+        <h3 id="regTitle">Register</h3>
         <div class="errorMessage" th:text="${msg}"></div>
 
         <form v-on:submit.prevent="register">
             <div><label>Name : </label><input class="textField" type="text" name="name" maxlength="25" minlength="2" required="required" v-model="name"/></div>
             <div><label>Email : </label><input class="textField" type="text" name="email" minlength="2" required="required" v-model="email"/></div>
             <div><label>Password : </label><input class="textField" type="password" name="password" minlength="2" required="required" v-model="password"/></div>
-            <input class="button" id="login" type="submit" value="Register"/>
+            <input class="button" id="loginForm" type="submit" value="Register"/>
         </form>
         
         <input class="returnButton" type="button" onclick="window.location='/'" value="<  return to home page"/>

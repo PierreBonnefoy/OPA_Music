@@ -14,14 +14,14 @@
         
         <body>
             <div class="form">
-                <h3 id="log">Login</h3>
+                <h3 id="logTitle">Login</h3>
                 <form v-on:submit.prevent="login">
                     <div><label> User Name : </label><input class="textField" type="text" name="username" maxlength="25" minlength="2" required="required" v-model="username"/> </div>
                     <div><label> Password : </label><input class="textField" type="password" name="password" minlength="2" required="required" v-model="password"/> </div>
-                    <div><input class="button" id="login" type="submit" value="Sign In"></div>
+                    <div><input class="button" id="loginForm" type="submit" value="Sign In"></div>
                 </form>
                 <hr>
-                    <router-link to="/register" class="button" id="register">Register</router-link>
+                    <div id="registerLink"><router-link to="/register" class="button" id="registerForm">Register</router-link></div>
                     <router-link to="/" class="returnButton">Return to home page</router-link>
             </div>
 

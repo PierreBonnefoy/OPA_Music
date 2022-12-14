@@ -15,8 +15,10 @@
             <link rel="shortcut icon" type="/image/png" href="/images/icon.png">
         </head>
         <body>
-            <span>{{username}}</span>
-            <input v-if="logged"  @click="logout" id="logout" class="button" type="submit" value="Sign Out" />
+            <span id="userName">{{username}}</span>
+            
+            <div id="out"><input v-if="logged" @click="logout" id="logout" class="button" type="submit" value="Sign Out" /></div>
+
             <a class="return" data-th-href="@{/clear}">
                 <img id="logo" src="../assets/images/logo.svg" >
             </a>
@@ -27,9 +29,9 @@
                 <input id="sea" class="button" type="submit" value="Search"/>
             </form>
             <br>
-            <h2>Favorites</h2>
+            <h2 id="favoriteTitle">Favorites</h2>
             <!-- Load all videos -->
-            <input class="button" type="submit" value="Load" @click="favvue()"/>
+            <div  id="loadFavorites"><input class="button" type="submit" value="Load" @click="favvue()"/></div>
             <span id="#musicList" v-for="vi in videos">
                 <iframe id="music" :src = "vi" width="420" height="315" frameborder="0" allowfullscreen><br></iframe>
                 

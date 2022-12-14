@@ -10,11 +10,11 @@ h3{
     color: slateblue;
 }
 
-#log{
+#logTitle{
     margin: 30px auto 80px auto;
 }
 
-#reg{
+#regTitle{
     margin: 40px auto 60px auto;
 }
 
@@ -80,8 +80,7 @@ label{
 
 
 
-#login{
-    
+#loginForm{
     display: block;
     margin: 50px auto 70px auto;
     width: 200px;
@@ -92,28 +91,28 @@ hr{
     border-color: slateblue;
 }
 
-#register{
+#registerLink {
+    justify-content: center;
+    margin: 0% 25%;
+}
+
+#registerForm{
     background-color: #ff0139;
     border-color: #ff0139;
     color: #0b1727;
     
     display: block;
-    margin: 30px auto;
+    margin: 15px auto;
     width: 30%;
+    padding: 5px 15%;
+    text-align: center;
 }
 
-#registerLink{
-    margin-top: 100%;
-    width: 200px;
-    height: 50px;
-}
-
-#register:hover{
+#registerForm:hover{
     background-color: #c0c0c1;
     border-color: #c0c0c1;
     color: #0b1727;
 }
-
 
 .returnButton{
     display: block;
@@ -128,6 +127,7 @@ hr{
     font-size: 14px;
     
     transition: 0.3s;
+    text-align: center;
 }
 
 .returnButton:hover{
