@@ -1,5 +1,5 @@
 <script setup>
-
+import "../assets/css/userForm.css"
 </script>
 
 <template>
@@ -35,7 +35,9 @@
 export default {
   data() {
     return {
-      posts: [],
+      name : "",
+      password : "",
+      email: "",
     };
   },
 
@@ -54,11 +56,14 @@ export default {
     })
     .then(async response => {
         const data = await response.json();
-        if(!response.ok){
+        if(data.status == 0){
             const error = (data && data.message) || response.status;
+            alert("Username already taken")
             return Promise.reject(error);
         }
+
         this.postId = data.id;
+        this.$router.push('/login')
     })
     .catch(error => {
         this.errorMessage = error;
@@ -66,10 +71,6 @@ export default {
     })
 
     },
-
-
-
-
 
     async getData() {
       try {

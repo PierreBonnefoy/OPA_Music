@@ -1,13 +1,9 @@
 package com.opa.opa_music;
 
-import java.util.HashSet;
-import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -52,17 +48,7 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
             throw new UsernameNotFoundException("User with name :" + name + " not found.");
         } else {
             User user = opt.get();
-            List<String> roles = user.getRoles();
-            Set<GrantedAuthority> ga = new HashSet<>();
-            for (String role : roles) {
-                ga.add(new SimpleGrantedAuthority(role));
-            }
-
-            springUser = new org.springframework.security.core.userdetails.User(
-                    name,
-                    user.getPassword(),
-                    ga);
         }
-        return springUser;
+        return UserDetailsImpl.build(opt.get());
     }
 }

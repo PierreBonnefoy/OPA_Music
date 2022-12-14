@@ -1,5 +1,6 @@
 <script setup>
-import App from '../App.vue';
+import '../assets/css/general.css'
+import '../assets/css/home.css'
 </script>
 
 <template>
@@ -9,18 +10,27 @@ import App from '../App.vue';
         <title>Home | OPAMusic</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/css/general.css">
-        <link rel="stylesheet" href="/css/home.css">
         <link rel="shortcut icon" type="/image/png" href="/images/icon.png">
         
     </head>
+    <header>
+    <div class="wrapper">
+
+      <nav>
+        <RouterLink v-if="!logged" id=reg class=button to="/register">Register</RouterLink>
+        <RouterLink v-if="!logged" id=log class=button to="/logIn">Log In</RouterLink>
+        <RouterLink v-if="logged" id=fav class=button to="/favorites">Favorites</RouterLink>
+      </nav>
+    </div>
+    </header>
     <body>
         <div id="mainPage">
-
-            <a class="return" data-th-href="@{/clear}">
+            <span>{{username}}</span>
+            <a class="return">
                 <img id="logo" src="../assets/images/logo.svg" >
             </a>
 
+            <input v-if="logged"  @click="logout" id="logout" class="button" type="submit" value="Sign Out" />
 
              <!-- Playlist menu 
             <div id="playlistChoice" v-show="displayMenu">
@@ -73,12 +83,20 @@ export default {
         return {
             posts: [],
             videos: [],
+            username: localStorage.getItem("username"),
+            logged: localStorage.getItem("logged"),
         };
     },
 
     
   
     methods: {
+        logout(){
+            localStorage.removeItem('token')
+            localStorage.removeItem('username')
+            localStorage.removeItem('logged')
+            this.$router.push("/login")
+        },
         async research(){
             this.videos = []
             this.search = this.search.replace("\\s","+")

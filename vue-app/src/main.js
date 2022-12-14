@@ -1,8 +1,8 @@
-import { createApp } from "vue";
+import { createApp, VueElement } from "vue";
 import App from "./App.vue";
 import router from "./router";
 
-import "./assets/css/general.css"
+VueElement.prototype.$logged = true
 
 const app = createApp(App);
 
