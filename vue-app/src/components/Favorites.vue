@@ -22,21 +22,21 @@
             </a>
             
             
-            <form data-th-action="@{/search}" data-th-object="${search}" method="POST">
-                <input class="SearchSpace" type="text" id="search" data-th-field="*{search}" placeholder="Search">
-                <input id="sea" class="button" type="submit" value="Search">
+            <form v-on:submit.prevent="research">
+                <input class="SearchSpace" type="text" id="search" placeholder="Search" v-model="search" v-value ="search"/>
+                <input id="sea" class="button" type="submit" value="Search"/>
             </form>
             <br>
             <h2>Favorites</h2>
             <!-- Load all videos -->
-            <div id="musicList">
-                <span data-th-each="v : ${videos}">
-                    <iframe id="music" width="420" height="315" data-th-src="'http://www.youtube.com/embed/' + ${v.url} + '?showinfo=0&modestbranding=1'" frameborder="0" allowfullscreen><br></iframe>
-                    <a id="delFav" data-th-href="@{/delFav/{link}&{mail} (link=${v.url},mail=${#httpServletRequest.remoteUser})}">
-                        <input id="delFavButton" class="button" type="button" value="🗑️" sec:authorize="isAuthenticated()">
-                    </a>
-                </span>
-            </div>      
+            <input class="button" type="submit" value="Load" @click="favvue()"/>
+            <span id="#musicList" v-for="vi in videos">
+                <iframe id="music" :src = "vi" width="420" height="315" frameborder="0" allowfullscreen><br></iframe>
+                
+                <a id="addfavvue">
+                    <input id="delFavButton" class="button" type="button" value="🗑️" @click="supprfavvue(vi)">
+                </a>
+            </span>      
         </body>
     </html>
 </template>
@@ -46,6 +46,7 @@
 export default {
     data() {
         return {
+            videos: [],
             username: localStorage.getItem("username"),
             logged: localStorage.getItem("logged"),
         };
@@ -59,6 +60,56 @@ export default {
             localStorage.removeItem('username')
             localStorage.removeItem('logged')
             this.$router.push("/login")
+        },
+        async research(){
+            this.videos = []
+            this.search = this.search.replace("\\s","+")
+            let max = 12
+        
+        // Make the search 
+        let url = "https://www.googleapis.com/youtube/v3/search"
+        let key = "AIzaSyCPciyCY789MtbHofF9M05AVx-p0DtXq_0"
+        let type = "video"
+        let part = "snippet"
+        let maxResults = max
+        let search = this.search
+        
+        await fetch(url+"?key="+key+"&type="+type+"&part="+part+"&maxResults="+maxResults +"&q="+search)
+        .then((response) => response.json())
+        .then((json)=>{
+            for(let i=0; i<12 ;i++){
+                this.videos.push("http://www.youtube.com/embed/" + json.items[i].id.videoId+ "?showinfo=0&modestbranding=1")
+            }})
+        },
+        async supprfavvue(v){
+            const req = await fetch('http://localhost:8080/api/supprfavvue', {
+                method: 'POST',
+                headers: {
+                    "Content-Type":'application/json',
+                },
+                body: JSON.stringify({
+                    user : this.username,
+                    url : v,
+                })
+            })
+            this.favvue()
+        },
+        async favvue(){
+            this.videos = []
+            const req = await fetch('http://localhost:8080/api/favvue', {
+                method: 'POST',
+                headers: {
+                    "Content-Type":'application/json',
+                },
+                body: JSON.stringify({
+                    username : this.username,
+                })
+            }).then((response) => response.json())
+            .then((json)=>{
+                for(let i of json){
+                    this.videos.push(i.url)
+                }
+            })
         },
     },
 }

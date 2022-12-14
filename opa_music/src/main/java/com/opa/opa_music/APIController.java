@@ -43,7 +43,7 @@ public class APIController {
         String type = "video";
         String part = "snippet";
         int maxResults = 12;
-        String key = "AIzaSyDbX-pXMguUhzBsu4a71kIIBFGvyKcjhuY";
+        String key = "AIzaSyCPciyCY789MtbHofF9M05AVx-p0DtXq_0";
 
         // Erase content 
         videos = new ListVideo();

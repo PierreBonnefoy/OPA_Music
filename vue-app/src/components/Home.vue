@@ -104,7 +104,7 @@ export default {
 
             // Make the search 
             let url = "https://www.googleapis.com/youtube/v3/search"
-            let key = "AIzaSyDbX-pXMguUhzBsu4a71kIIBFGvyKcjhuY"
+            let key = "AIzaSyCPciyCY789MtbHofF9M05AVx-p0DtXq_0"
             let type = "video"
             let part = "snippet"
             let maxResults = max

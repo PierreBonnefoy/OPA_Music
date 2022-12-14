@@ -24,12 +24,6 @@ public class RESTController {
     @Autowired
     private FavoritesRepository allFavorites; 
 
-    @RequestMapping("/users")
-    public List<User> fetchUsers(){
-        
-        return userRepository.findAll();
-    }
-
     @RequestMapping("/register")
     public ResponseEntity<String> doRegister(@RequestBody User user){
         JSONObject resp = new JSONObject();
@@ -48,5 +42,18 @@ public class RESTController {
         allFavorites.save(v);
         resp.put("status", 1);
         return ResponseEntity.ok(resp.toJSONString());
+    }
+
+    @RequestMapping("supprfavvue")
+    public ResponseEntity<String> supprfavvue(@RequestBody Favorites v){
+        JSONObject resp = new JSONObject();
+        allFavorites.deleteByUserAndUrl(v.user,v.url);
+        resp.put("status", 1);
+        return ResponseEntity.ok(resp.toJSONString());
+    }
+
+    @RequestMapping("favvue")
+    public List<Favorites> favvue(@RequestBody JSONObject user){
+        return allFavorites.findAllByUser(user.get("username").toString());
     }
 }
