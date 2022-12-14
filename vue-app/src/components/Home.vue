@@ -1,6 +1,6 @@
 <script setup>
-import '../assets/css/general.css'
-import '../assets/css/home.css'
+import '../assets/css/general.css';
+import '../assets/css/home.css';
 </script>
 
 <template>

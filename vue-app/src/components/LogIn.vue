@@ -1,6 +1,9 @@
 <script setup>
-import "../assets/css/userForm.css"
 </script>
+
+<style scoped>
+@import "../assets/css/userForm.css";
+</style>
 
 <template>
     <!DOCTYPE html>
