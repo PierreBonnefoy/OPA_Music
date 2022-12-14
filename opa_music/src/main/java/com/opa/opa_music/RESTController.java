@@ -21,6 +21,8 @@ public class RESTController {
     private IUserService userService;
     //Returning all users
 
+    @Autowired
+    private FavoritesRepository allFavorites; 
 
     @RequestMapping("/users")
     public List<User> fetchUsers(){
@@ -38,5 +40,13 @@ public class RESTController {
         }
         resp.put("status", 0);
         return ResponseEntity.ok(resp.toString());
+    }
+
+    @RequestMapping("addfavvue")
+    public ResponseEntity<String> addfav(@RequestBody Favorites v){
+        JSONObject resp = new JSONObject();
+        allFavorites.save(v);
+        resp.put("status", 1);
+        return ResponseEntity.ok(resp.toJSONString());
     }
 }

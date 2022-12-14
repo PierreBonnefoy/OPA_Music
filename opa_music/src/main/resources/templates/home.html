@@ -72,10 +72,9 @@
             <div id="musicList">
                 <span data-th-each="v : ${videos}">
                     <iframe id="music" width="420" height="315" data-th-src="'http://www.youtube.com/embed/' + ${v.url} + '?showinfo=0&modestbranding=1'" frameborder="0" allowfullscreen><br></iframe>
-
-                    <!-- data-th-href="@{/addFav/{link}&{mail} (link=${v.url},mail=${#httpServletRequest.remoteUser})}" -->
-                    <a id="addFav">
-                        <input id="addFavButton" class="button" type="button" value="⭐️" sec:authorize="isAuthenticated()" @click="displayMenu = !displayMenu">
+                    
+                    <a id="addFav" data-th-href="@{/addFav/{link}&{mail} (link=${v.url},mail=${#httpServletRequest.remoteUser})}">
+                        <input id="addFavButton" class="button" type="button" value="⭐️" sec:authorize="isAuthenticated()" >
                     </a>
                 </span>
             </div>
