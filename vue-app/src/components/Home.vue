@@ -1,5 +1,5 @@
 <script setup>
-
+import App from '../App.vue';
 </script>
 
 <template>
@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="/css/general.css">
         <link rel="stylesheet" href="/css/home.css">
         <link rel="shortcut icon" type="/image/png" href="/images/icon.png">
+        
     </head>
     <body>
         <div id="mainPage">
@@ -47,27 +48,58 @@
                 </div>
             </div>-->
 
-
-
-            <form data-th-action="@{/search}" data-th-object="${search}" method="POST">
-                <input class="SearchSpace" type="text" id="search" data-th-field="*{search}" placeholder="Search" data-th-value = "${search.search}">
-                <input id="sea" class="button" type="submit" value="Search">
+            <form v-on:submit.prevent="research">
+                <input class="SearchSpace" type="text" id="search" placeholder="Search" v-model="search" v-value ="search"/>
+                <input id="sea" class="button" type="submit" value="Search"/>
             </form>
 
             <br>
             <!-- Load all videos -->
-            <div id="musicList">
-                <span data-th-each="v : ${videos}">
-                    <iframe id="music" width="420" height="315" data-th-src="'http://www.youtube.com/embed/' + ${v.url} + '?showinfo=0&modestbranding=1'" frameborder="0" allowfullscreen><br></iframe>
-
-                    <!-- data-th-href="@{/addFav/{link}&{mail} (link=${v.url},mail=${#httpServletRequest.remoteUser})}" -->
-                    <a id="addFav">
-                        <input id="addFavButton" class="button" type="button" value="⭐️" sec:authorize="isAuthenticated()" @click="displayMenu = !displayMenu">
-                    </a>
-                </span>
-            </div>
+            <span id="#musicList" v-for="vi in videos">
+                <iframe id="music" :src = "vi" width="420" height="315" frameborder="0" allowfullscreen><br></iframe>
+                
+                <a id="addFav">
+                    <input id="addFavButton" class="button" type="button" value="⭐️" @click="displayMenu = !displayMenu">
+                </a>
+            </span>
         </div>
     </body>
 
 </template>
+<script>
 
+export default {
+    data() {
+        return {
+            posts: [],
+            videos: [],
+        };
+    },
+
+    
+  
+    methods: {
+        async research(){
+            this.videos = []
+            this.search = this.search.replace("\\s","+")
+            let max = 12
+
+            // Make the search 
+            let url = "https://www.googleapis.com/youtube/v3/search"
+            let key = "AIzaSyDbX-pXMguUhzBsu4a71kIIBFGvyKcjhuY"
+            let type = "video"
+            let part = "snippet"
+            let maxResults = max
+            let search = this.search
+            
+            await fetch(url+"?key="+key+"&type="+type+"&part="+part+"&maxResults="+maxResults +"&q="+search)
+            .then((response) => response.json())
+            .then((json)=>{
+                for(let i=0; i<12 ;i++){
+                    this.videos.push("http://www.youtube.com/embed/" + json.items[i].id.videoId+ "?showinfo=0&modestbranding=1")
+            }})
+        },
+    },
+}
+
+</script>
