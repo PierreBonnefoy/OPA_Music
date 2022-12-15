@@ -6,21 +6,21 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
 
-import io.micrometer.core.ipc.http.HttpSender.Response;
 import net.minidev.json.JSONObject;
 
 
 import java.util.List;
 
-
+/*
+ * Class wich implements the method in order to generate the REST API.
+ */
 @RestController
+//Address of the API.
 @RequestMapping("/api")
 public class RESTController {
-    @Autowired
-    private UserRepository userRepository;
+    //Some importants repositories imports.
     @Autowired
     private IUserService userService;
-    //Returning all users
 
     @Autowired
     private FavoritesRepository allFavorites; 
@@ -31,14 +31,23 @@ public class RESTController {
     @Autowired
     private PlayListTableRepository allPTab;
 
+    //Method wich is implementing the API for the registering system.
     @RequestMapping("/register")
     public ResponseEntity<String> doRegister(@RequestBody User user){
+        //Creation of the JSON response object.
         JSONObject resp = new JSONObject();
+
+        //Verification of the unicity of the username.
         if (!userService.isUsernameAlreadyTake(user.getName())) {
-            Integer id = userService.saveUser(user);
+            //Saving the user into the database.
+            userService.saveUser(user);
+
+            //Generation of the response. 
             resp.put("status", 1);
             return ResponseEntity.ok(resp.toString());
         }
+
+        //Generation of the error response. 
         resp.put("status", 0);
         return ResponseEntity.ok(resp.toString());
     }

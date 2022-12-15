@@ -2,14 +2,13 @@ package com.opa.opa_music;
 
 import java.util.Collection;
 import java.util.Objects;
-
-
 import org.springframework.security.core.GrantedAuthority;
-
 import org.springframework.security.core.userdetails.UserDetails;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/*
+ * Class wich implements the User Details from Spring.
+ */
 public class UserDetailsImpl implements UserDetails {
   private static final long serialVersionUID = 1L;
 
@@ -30,6 +29,7 @@ public class UserDetailsImpl implements UserDetails {
     this.password = password;
   }
 
+  //Method wich build a user.
   public static UserDetailsImpl build(User user) {
 
 
