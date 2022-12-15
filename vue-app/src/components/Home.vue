@@ -212,6 +212,7 @@ export default {
         async addInPlaylist() {
 
             /* Ajouter les vidéos dans les playlists */
+            
             for(let p of this.selectedPlaylists){
                 const req = await fetch('http://localhost:8080/api/addtoplaylist', {
                     method: 'POST',
@@ -220,9 +221,8 @@ export default {
                     },
                     body: JSON.stringify({
                         user : this.username,
-                        link : this.selectedVideo,
-                        id : p.id,
-                        name : p.name,
+                        url : this.selectedVideo,
+                        pid : p,
                     })
                 })
             }

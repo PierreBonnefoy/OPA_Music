@@ -79,7 +79,11 @@ public class RESTController {
 
     @RequestMapping("/loadAll")
     public List<PlaylistTable> loadAll(@RequestBody JSONObject user){
-
         return allPTab.findAllByUser(user.get("username").toString());
+    }
+
+    @RequestMapping("/showPlayList")
+    public List<PlayList> show(@RequestBody JSONObject data){
+        return allPlayList.findAllByUserAndPid(data.get("username").toString(),(Integer) data.get("pid"));
     }
 }
