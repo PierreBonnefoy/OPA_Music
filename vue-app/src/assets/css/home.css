@@ -90,7 +90,7 @@
 #favButton {
     position: absolute;
     left: 3%;
-    top: 5em;
+    top: 5.5em;
     overflow: hidden;
     padding: 30px;
     animation: topScroll 3s;
@@ -98,9 +98,10 @@
 
 #playlistButton {
     position: absolute;
-    left: 5%;
-    top: 13em;
+    left: 3%;
+    top: 12em;
     overflow: hidden;
+    padding: 30px;
     animation: topScroll 3s;
 }
 
@@ -259,9 +260,9 @@
     background-color: #0b1727;
     border-color: #ff0139;
     color: #ff0139;
-    width: 200px;
-    height: 75px;
+    padding: 25px 39px;
     font-size: 20px;
+    text-decoration: none;
 }
 
 #playlist:hover {

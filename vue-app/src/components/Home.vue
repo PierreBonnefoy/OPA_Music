@@ -26,6 +26,9 @@ import '../assets/css/home.css';
         <div id="favButton">
             <RouterLink v-if="logged" id=favorite class=button to="/favorites">⭐️ Favorites</RouterLink>
         </div>
+        <div id="playlistButton">
+            <RouterLink v-if="logged" id=playlist class=button to="/playlists"><span class="blue">▶</span> Playlists</RouterLink>
+        </div>
       </nav>
     </div>
     </header>
@@ -37,6 +40,37 @@ import '../assets/css/home.css';
             </a>
 
             <div id="out"><input v-if="logged"  @click="logout" id="logout" class="button" type="submit" value="Sign Out" /></div>
+
+
+
+            <!-- playlist menu -->
+            <div id="playlistChoice" v-show="displayMenu">
+                <input id="crossClose" class="button" type="button" value="X" @click="ChangeDisplayMenu" />
+            
+                <h3>Choose a playlist</h3>
+            
+                <form>
+                    <div v-for="playlist in playlists">
+                        <input type="checkbox" v-bind:id="playlist.id" @click="()=>{selectPlaylist(playlist.id)}"
+                            v-model="playlist.selected" />
+                        <label v-bind:for="playlist.id">{{playlist.name}}</label>
+                    </div>
+                    <p>{{selectedPlaylists}}</p>
+            
+                    <a>
+                        <input id="playlistMenuButton" class="button" type="button" value="Add" @click="addInPlaylist" />
+                    </a>
+                </form>
+            
+                <hr>
+                <div>
+                    <h3>Create a new playlist : {{newPlaylist}}</h3>
+                    <input v-model="newPlaylist" type="text" v-on:keyup.enter="createPlaylist" />
+                    <input id="playlistMenuButton" class="button" type="button" value="Create" @click="createPlaylist"
+                        v-if="newPlaylist != ''" />
+                </div>
+            </div>
+
 
 
             <form v-on:submit.prevent="research">
@@ -53,7 +87,7 @@ import '../assets/css/home.css';
                     <input id="addFavButton" class="button" type="button" value="⭐️" @click="addfavvue(vi)">
                 </a>
                 <a>
-                    <input id="addPlaylistButton" class="button blue" type="button" value="▶">
+                    <input id="addPlaylistButton" class="button blue" type="button" value="▶"  @click="ChangeDisplayMenu">
                 </a>
             </span>
         </div>
@@ -69,6 +103,16 @@ export default {
             videos: [],
             username: localStorage.getItem("username"),
             logged: localStorage.getItem("logged"),
+
+            // playlist menu
+            displayMenu: false,
+            newPlaylist: "New Playlist",
+            playlists: [
+                { id: "1", name: "p1", selected: false },
+                { id: "2", name: "p2", selected: false },
+                { id: "3", name: "p3", selected: false }
+            ],
+            selectedPlaylists: []
         };
     },
 
@@ -112,8 +156,43 @@ export default {
                     url : v,
                 })
             })
+        },
+
+
+        // playlist menu
+        ChangeDisplayMenu() {
+            // reset form
+            this.playlists.forEach((item) => (item.selected = false));
+            this.selectedPlaylists = [];
+            this.newPlaylist = "New Playlist";
+            // show or hide menu
+            this.displayMenu = !this.displayMenu;
+        },
+        createPlaylist() {
+            let newId = (this.playlists.length + 1).toString();
+            this.playlists.push({ id: newId, name: this.newPlaylist, selected: true });
+            this.selectPlaylist(newId);
+            this.newPlaylist = "New Playlist";
+        },
+        selectPlaylist(playlist) {
+            if (this.selectedPlaylists.includes(playlist)) {
+                this.selectedPlaylists = this.selectedPlaylists.filter(item => !playlist.includes(item));
+            }
+            else {
+                this.selectedPlaylists.push(playlist);
+            }
+        },
+        addInPlaylist() {
+
+            /* Ajouter les vidéos dans les playlists */
+
+            this.ChangeDisplayMenu();
         }
     },
 }
+
+
+
+
 
 </script>
