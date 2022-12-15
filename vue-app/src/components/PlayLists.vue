@@ -28,14 +28,14 @@
 
             <div id="playlistTabs">
                 <span v-for="n in names">
-                    <input id="playlistTab" class="button" type="submit" :value="n.name" @click="showPlayList(n.id)"/>
+                    <input id="playlistTab" class="button" type="submit" :value="n.name" @click="showPlayList(n)"/>
                 </span>
             </div>
 
             <a id="delPlaylist">
                 <input id="delPlaylistButton" class="button" type="button" value="🗑️" @click="supprPlay">
             </a>
-            <h3 id="playlistTitle" v-bind:value="name"><i>Le nom de la playlist</i></h3>
+            <h3 id="playlistTitle">{{ name }}</h3>
 
             <span id="#musicList" v-for="vi in videos">
                 <iframe id="music" :src = "vi" width="420" height="315" frameborder="0" allowfullscreen><br></iframe>
@@ -54,8 +54,8 @@ export default {
     data() {
         return {
             videos: [],
-            name: "",
             names: [],
+            name : "",
             playlist: "",
             username: localStorage.getItem("username"),
             logged: localStorage.getItem("logged"),
@@ -90,7 +90,8 @@ export default {
         },
         async showPlayList(p){
             this.videos = []
-            this.playlist = p
+            this.playlist = p.id
+            this.name = p.name
             const req = await fetch('http://localhost:8080/api/showPlayList', {
                 method: 'POST',
                 headers: {
@@ -98,11 +99,10 @@ export default {
                 },
                 body: JSON.stringify({
                     username : this.username,
-                    pid : p,
+                    pid : p.id,
                 })
             }).then((response) => response.json())
             .then((json)=>{
-                console.log(json)
                 for(let i of json){
                     this.videos.push(i.url)
                 }
@@ -120,7 +120,7 @@ export default {
                     url : v,
                 })
             })
-            this.showPlayList(this.playlist)
+            this.showPlayList({id:this.playlist,name:this.name})
         },
         async supprPlay(){
             const req = await fetch('http://localhost:8080/api/supprPlay', {
@@ -134,6 +134,8 @@ export default {
                 })
             })
             this.videos = []
+            this.playlist = ""
+            this.name = ""
             this.loadAll()
         }
     },
