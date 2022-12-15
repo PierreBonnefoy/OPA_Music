@@ -18,16 +18,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class APIController {
-    
+
     ListVideo videos = new ListVideo();
     Search searchSpace = new Search();
 
     @Inject
     FavoritesRepository favoritesRepo;
 
-    // Initialization of Search Object and ListVideo Object for the communication between java and html
+    // Initialization of Search Object and ListVideo Object for the communication
+    // between java and html
     @GetMapping("/")
-    public String home(Model model){
+    public String home(Model model) {
         model.addAttribute("search", searchSpace);
         model.addAttribute("videos", videos.listVideo);
         return "home";
@@ -35,24 +36,25 @@ public class APIController {
 
     // Call for a search
     @PostMapping("/search")
-    public String search(String search){
+    public String search(String search) {
 
         // Definition of all parameters used to create the search url
         String url = "https://www.googleapis.com/youtube/v3/search";
         String type = "video";
         String part = "snippet";
         int maxResults = 12;
-        String key = "AIzaSyDbX-pXMguUhzBsu4a71kIIBFGvyKcjhuY";
+        String key = "AIzaSyD5M5IzAQRkvydUZ12viKfkUzTwSa-BPAY";
 
-        // Erase content 
+        // Erase content
         videos = new ListVideo();
         searchSpace.search = search;
         // Replace all whitespace by '+'
         search = search.replaceAll("\\s", "+");
 
-        try{
+        try {
             // Create the search url and make the connexion
-            URL u = new URL(url+"?key="+key+"&type="+type+"&part="+part+"&maxResults="+maxResults +"&q="+search);
+            URL u = new URL(url + "?key=" + key + "&type=" + type + "&part=" + part + "&maxResults=" + maxResults
+                    + "&q=" + search);
             URLConnection con = u.openConnection();
             con.connect();
 
@@ -60,33 +62,34 @@ public class APIController {
             BufferedReader read = new BufferedReader(new InputStreamReader(con.getInputStream()));
             StringBuilder sb = new StringBuilder();
             String line;
-            while((line = read.readLine())!=null){
+            String link;
+
+            while ((line = read.readLine()) != null) {
                 sb.append(line + "\n");
             }
             read.close();
 
             // Select 'videoId' of the first 'maxResults' videos and add it to 'videos'
             JSONObject jObject = new JSONObject(sb.toString());
-            for(int i=0;i<maxResults;i++){
-                videos.listVideo.add(new Video(jObject.getJSONArray("items").getJSONObject(i).getJSONObject("id").get("videoId").toString()));
+            for (int i = 0; i < maxResults; i++) {
+                link = jObject.getJSONArray("items").getJSONObject(i).getJSONObject("id").get("videoId").toString();
+                videos.listVideo.add(new Video(link));
             }
-            
 
-        }catch(MalformedURLException e){
+        } catch (MalformedURLException e) {
             e.printStackTrace();
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        
 
         return "redirect:/";
     }
-    
+
     // Save a fav
     @GetMapping("/addFav/{link}&{mail}")
-    public String addFav(@PathVariable String link,@PathVariable String mail) {
+    public String addFav(@PathVariable String link, @PathVariable String mail) {
 
-        Favorites fav = new Favorites(mail,link);
+        Favorites fav = new Favorites(mail, "http://www.youtube.com/embed/" + link + "?showinfo=0&modestbranding=1");
 
         favoritesRepo.save(fav);
 
@@ -95,15 +98,15 @@ public class APIController {
 
     // Redirects to Favorites
     @GetMapping("/fav/{mail}")
-    public String fav(@PathVariable String mail,Model model){
+    public String fav(@PathVariable String mail, Model model) {
 
         // Erase content
         searchSpace = new Search();
         videos = new ListVideo();
 
         // Load favorites in 'videos'
-        for(Favorites i : favoritesRepo.findAllByUser(mail)){
-            videos.listVideo.add(new Video(i.url));
+        for (Favorites i : favoritesRepo.findAllByUser(mail)) {
+            videos.listVideo.add(new Video(i.url.substring(29)));
         }
 
         // Pass attributes to /fav
@@ -114,19 +117,18 @@ public class APIController {
 
     // Remove 'link' Favorite of user 'mail'
     @GetMapping("/delFav/{link}&{mail}")
-    public String delFav(@PathVariable String link,@PathVariable String mail) {
+    public String delFav(@PathVariable String link, @PathVariable String mail) {
 
-        favoritesRepo.deleteByUserAndUrl(mail, link);
+        favoritesRepo.deleteByUserAndUrl(mail, "http://www.youtube.com/embed/" + link);
 
-        return ("redirect:/fav/"+mail);
+        return ("redirect:/fav/" + mail);
     }
 
     @GetMapping("/clear")
-    public String clear(){
+    public String clear() {
         // Erase content
         searchSpace = new Search();
         videos = new ListVideo();
         return ("redirect:/");
     }
-
 }

@@ -1,0 +1,406 @@
+#userName {
+    font-size: 16px;
+    position: absolute;
+    top: 2.5em;
+    left: 5%;
+    padding-left: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: #c0c0c1;
+    animation: opacity 2s;
+}
+
+#favoriteTitle {
+    font-size: 40px;
+    text-align: center;
+    color: #ffe74e;
+    width: 35%;
+    margin: 100px auto;
+    border-bottom: solid 2px #ffe74e;
+    animation: topScroll2 2s;
+}
+
+#playlistTitle {
+    font-size: 40px;
+    text-align: center;
+    color: aqua;
+    width: 35%;
+    margin: 100px auto;
+    border-bottom: solid 2px aqua;
+    animation: topScroll2 2s;
+}
+
+#playlistName {
+    font-size: 30px;
+    text-align: center;
+    color: rgb(10, 225, 225);
+    width: 25%;
+    margin: 100px auto;
+    border: solid 2px rgb(10, 225, 225);
+    padding: 20px;
+    animation: topScroll2 2s;
+}
+
+.SearchSpace {
+    display: block;
+    background-color: #0b1727;
+    border: 3px solid;
+    border-radius: 3em;
+    border-color: #ff0139;
+    font-size: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 50px auto 20px auto;
+    width: 40%;
+    height: 40px;
+    color: #c0c0c1;
+    animation: opacity 3s;
+}
+
+.SearchSpace:hover {
+    border: 7px double;
+    border-color: #ff0139;
+    margin-top: 46px;
+    margin-bottom: 16px;
+}
+
+#sea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+    animation: opacity 5s;
+}
+
+
+#reg {
+    position: absolute;
+    right: 2%;
+    top: 3.5em;
+    overflow: hidden;
+    padding: 25px;
+    height: 25px;
+}
+
+#log {
+    position: absolute;
+    right: 2%;
+    top: 7em;
+    overflow: hidden;
+    padding: 25px;
+    height: 25px;
+}
+
+#out {
+    position: absolute;
+    right: 2%;
+    top: 2em;
+    overflow: hidden;
+}
+
+#favButton {
+    position: absolute;
+    left: 3%;
+    top: 5.5em;
+    overflow: hidden;
+    padding: 30px;
+    animation: topScroll 3s;
+}
+
+#playlistButton {
+    position: absolute;
+    left: 3%;
+    top: 12em;
+    overflow: hidden;
+    padding: 30px;
+    animation: topScroll 3s;
+}
+
+#musicList {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+    width: 85%;
+    animation: topScroll 3s;
+}
+
+#music {
+    margin: 45px 1%;
+    border-radius: 1em;
+    width: 30%;
+    height: 200px;
+    border-bottom: solid 5px #ff0139;
+    border-right: solid 5px #ff0139;
+    transition: 0.2s;
+}
+
+#music:hover {
+    margin: 0 0 35px 0;
+    width: 32%;
+    height: 230px;
+    border-radius: 10px;
+    border: solid 3px #c0c0c1;
+}
+
+
+#addFavButton {
+    position: absolute;
+    margin-left: -11.5em;
+    margin-top: 17.5em;
+    width: 70px;
+}
+
+#addFavButton:hover {
+    background-color: #ffe74e;
+    border: solid 3px #ffe74e;
+}
+
+
+#addPlaylistButton, #delFavButton {
+    position: absolute;
+    margin-left: -6em;
+    width: 70px;
+    margin-top: 17.5em;
+}
+
+#addPlaylistButton:hover {
+    color: rgb(10, 225, 225);
+    text-shadow: 1px 0 0 black, 0 1px 0 black, 0 -1px 0 black, -1px 0 0 black;
+    background-color: aqua;
+    border: solid 3px aqua;
+}
+
+
+
+#delPlaylistButton {
+    position: absolute;
+    margin-top: 100px;
+    right: 10%;
+    width: 150px;
+    border: solid 3px aqua;
+    font-size: 22px;
+    animation: topScroll2 3s;
+}
+
+#delPlaylistButton:hover {
+    background-color: #c0c0c1;
+    border: solid 3px #c0c0c1;
+}
+
+
+
+#delFavButton:hover {
+    background-color: #c0c0c1;
+    border: solid 3px #c0c0c1;
+}
+
+
+#loadFavorites {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+#playlistChoice {
+    position: fixed;
+    width: 33%;
+    background-color: #122b4cec;
+    border: solid 2px rgb(11, 205, 235);
+    border-radius: 2em;
+    margin-left: 31%;
+    padding: 20px;
+    color: rgb(11, 205, 235);
+    text-align: center;
+    z-index: 1;
+    animation: topScroll 0.8s;
+}
+
+#playlistChoice hr {
+    color: rgb(11, 205, 235);
+}
+
+#textFieldPlaylist {
+    color: aqua;
+    background-color: transparent;
+    border: 2px solid;
+    border-radius: 2em;
+
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin: 10px 0px;
+}
+
+#checkboxPlaylist{
+    text-align: left;
+    margin: 0px 15% 0px 15%;
+    padding: 3px 10% 3px 10%;
+}
+
+#checkboxPlaylist:hover {
+    background-color: rgba(0, 255, 255, 0.463);
+    color: lightcyan;
+    border-radius: 2em;
+}
+
+.checkButton{
+    position: absolute; 
+    margin-left: -10px;
+    cursor: pointer;
+}
+
+#nomPlaylist{
+    display: block;
+    margin: 0px 15px;
+    cursor: pointer;
+}
+
+
+#textFieldPlaylist:hover, #textFieldPlaylist:focus{
+    color:lightcyan;
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+#crossClose {
+    position: absolute;
+    color: red;
+    border-color: transparent;
+    background-color: transparent;
+    padding: 0px;
+    width: 30px;
+    height: 30px;
+    top: 2%;
+    right: 2%;
+}
+
+#crossClose:hover {
+    color: #122b4cec;
+    background-color: red;
+}
+
+#playlistMenuButton {
+    color: rgb(11, 205, 235);
+    border-color: rgb(11, 205, 235);
+    background-color: transparent;
+    padding: 0px;
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+}
+
+#playlistMenuButton:hover {
+    color: lightcyan;
+    border-color: lightcyan;
+}
+
+
+#favorite {
+    background-color: #0b1727;
+    border-color: #ff0139;
+    color: #ff0139;
+    padding: 25px 30px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+#favorite:hover {
+    border-color: #ffe74e;
+    color: #ffe74e;
+}
+
+#playlist {
+    background-color: #0b1727;
+    border-color: #ff0139;
+    color: #ff0139;
+    padding: 25px 39px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+#playlist:hover {
+    background-color: #0b1727;
+    border-color: aqua;
+    color: aqua;
+}
+
+
+#playlistTab{
+    border-color: rgb(11, 205, 235);
+    color: rgb(11, 205, 235);
+    background-color: #0b1727;
+    animation: topScroll 3s;
+}
+
+#playlistTab:hover {
+    color: #0b1727;
+    border-color: aqua;
+    background-color: aqua;
+}
+
+#login {
+    animation: leftScroll 4s;
+    padding: 8px 40px;
+    text-decoration: none;
+}
+
+#register {
+    background-color: #ff0139;
+    border-color: #ff0139;
+    color: #0b1727;
+    animation: leftScroll 3s;
+    padding: 8px 30px;
+    text-decoration: none;
+}
+
+#register:hover {
+    background-color: #c0c0c1;
+    border-color: #c0c0c1;
+    color: #0b1727;
+}
+
+#logout {
+    background-color: #0b1727;
+    border-color: #0b1727;
+    color: #c0c0c1;
+    animation: leftScroll 3s;
+}
+
+#logout:hover {
+    background-color: #0b1727;
+    border-color: #c0c0c1;
+    color: #c0c0c1;
+}
+
+.blue {
+    color: aqua;
+}
+
+@keyframes leftScroll {
+    0%  { margin-left: 150% }
+    10%  { margin-left: 150% }
+    80%  { margin-left: 0 }
+    100%  { margin-left: 0 }
+  }
+
+  @keyframes topScroll {
+    0%  { margin-top: 150% }
+    10%  { margin-top: 150% }
+    80%  { margin-top: 0 }
+    100%  { margin-top: 0 }
+  }
+
+  @keyframes topScroll2 {
+    0%  { margin-top: 150% }
+    10%  { margin-top: 150% }
+    80%  { margin-top: 100px }
+    100%  { margin-top: 100px }
+  }
+
+  @keyframes opacity {
+    0%  { opacity: 0 }
+    10%  { opacity: 0 }
+    80%  { opacity: 1 }
+    100%  { opacity: 1 }
+  }

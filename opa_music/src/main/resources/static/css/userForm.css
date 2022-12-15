@@ -124,7 +124,7 @@ hr{
     
     margin: auto;
     width: 200px;
-    height: 20px;
+    height: 25px;
     font-size: 14px;
     
     transition: 0.3s;
@@ -132,6 +132,7 @@ hr{
 
 .returnButton:hover{
     color: #c0c0c1;
+    cursor: pointer;
 }
 
 

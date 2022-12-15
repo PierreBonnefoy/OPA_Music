@@ -21,14 +21,17 @@ body{
     background-color: #0b1727;
     border-color: #c0c0c1;
     color: #c0c0c1;
-    
+    cursor: pointer;
 }
 
 #logo{
     margin-top: 3em;
-    width: 50%;  
-    transform: translate(50%, 0);
+    width: 100%;  
 }
 
-
+.return{
+    display: block;
+    margin: auto;
+    width: 50%;  
+}
 

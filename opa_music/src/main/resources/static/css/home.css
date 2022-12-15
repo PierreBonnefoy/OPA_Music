@@ -81,7 +81,7 @@ h2{
     animation: bottomScroll 3s;
 }
 
-#musicList{
+#musicList {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -90,49 +90,44 @@ h2{
     animation: bottomScroll 3s;
 }
 
-#music{
+#music {
     margin: 45px 1%;
     border-radius: 1em;
     width: 30%;
     height: 200px;
-    border-bottom : solid 5px #ff0139;
-    border-right : solid 5px #ff0139;
+    border-bottom: solid 5px #ff0139;
+    border-right: solid 5px #ff0139;
     transition: 0.2s;
 }
 
-#music:hover{
+#music:hover {
     margin: 0 0 35px 0;
     width: 32%;
     height: 230px;
     border-radius: 10px;
-    border : solid 3px #c0c0c1;
+    border: solid 3px #c0c0c1;
 }
 
-#addFavButton{
-    position: relative;
-    margin-left: -7%;
-    width: auto;
+
+#addFavButton,
+#delFavButton {
+    position: absolute;
+    margin-left: -6em;
+    width: 70px;
+    margin-top: 17.5em;
 }
 
-#addFavButton:hover{
+#addFavButton:hover {
     background-color: #ffe74e;
-    border : solid 3px #ffe74e;
+    border: solid 3px #ffe74e;
 }
 
-#delFavButton{
-    position: relative;
-    margin-left: -7%;
-    width: auto;
-}
 
-#delFavButton:hover{
+#delFavButton:hover {
     background-color: #c0c0c1;
-    border : solid 3px #c0c0c1;
+    border: solid 3px #c0c0c1;
 }
 
-span{
-    justify-content: center;   
-}
 
 #favorite{
     background-color: #0b1727;
