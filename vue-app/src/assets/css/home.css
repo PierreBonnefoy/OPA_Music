@@ -158,8 +158,10 @@
 }
 
 
+
 #delPlaylistButton {
     position: absolute;
+    margin-top: 100px;
     right: 10%;
     width: 150px;
     border: solid 3px aqua;
@@ -266,8 +268,22 @@
 }
 
 #playlist:hover {
+    background-color: #0b1727;
     border-color: aqua;
     color: aqua;
+}
+
+
+#playlistTab{
+    border-color: rgb(11, 205, 235);
+    color: rgb(11, 205, 235);
+    background-color: #0b1727;
+}
+
+#playlistTab:hover {
+    color: #0b1727;
+    border-color: aqua;
+    background-color: aqua;
 }
 
 #login {

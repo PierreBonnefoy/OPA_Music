@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="/css/general.css">
         <link rel="stylesheet" href="/css/home.css">
         <link rel="shortcut icon" type="/image/png" href="/images/icon.png">
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     </head>
     <body>
         <div id="mainPage">
@@ -34,34 +33,6 @@
             </a>
 
 
-             <!-- Playlist menu -->
-            <div id="playlistChoice" v-show="displayMenu">
-                <input type="button" value="X" @click="displayMenu = !displayMenu" /> 
-                
-                <h3>Choose a playlist</h3>
-                
-                <form>
-                    <div v-for="playlist in playlists" :content="playlist">
-                        <input type="checkbox" name={{playlist}}/>
-                        <label for={{playlist}}>{{playlist}}</label>
-                    </div>
-                    <p>{{selectedPlaylists}}</p>
-
-                    <a>
-                    <input type="button" value="add" @click="displayMenu = !displayMenu" /> 
-                    </a>
-                </form>
-
-                <hr>
-                <div>
-                    <h3>Create a new playlist : {{newPlaylist}}</h3>
-                    <input v-bind:value="newPlaylist" v-model="newPlaylist" type="text" v-on:keyup.enter="createPlaylist"></input>
-                    <input type="button" value="Create" @click="createPlaylist" v-if="newPlaylist != ''"/>
-                </div>
-            </div>
-
-
-
             <form data-th-action="@{/search}" data-th-object="${search}" method="POST">
                 <input class="SearchSpace" type="text" id="search" data-th-field="*{search}" placeholder="Search" data-th-value = "${search.search}">
                 <input id="sea" class="button" type="submit" value="Search">
@@ -81,25 +52,3 @@
         </div>
     </body>
     
-
-    <script>
-
-        const playlistMenu = Vue.createApp({
-            data(){
-                return{
-                    displayMenu: false,
-                    newPlaylist: "New Playlist",
-                    playlists: ["p1", "p2", "p3"],
-                    selectedPlaylists: []
-                }
-            },
-            methods:{
-                createPlaylist(){
-                    this.playlists.push(this.newPlaylist);
-                    this.newPlaylist = "New Playlist";
-                }
-            }
-        }).mount("#mainPage")
-
-    </script>
-</html>

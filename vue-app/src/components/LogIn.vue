@@ -9,6 +9,7 @@
     <!DOCTYPE html>
     <html>
         <head>
+            <meta charset="ISO-8859-1">
             <title>Login</title>
         </head>
         
@@ -22,7 +23,7 @@
                 </form>
                 <hr>
                     <div id="registerLink"><router-link to="/register" class="button" id="registerForm">Register</router-link></div>
-                    <router-link to="/" class="returnButton">Return to home page</router-link>
+                    <router-link to="/" class="returnButton">&lt  return to home page</router-link>
             </div>
 
         </body>

@@ -196,24 +196,24 @@ export default {
                 }).then((response) => response.json())
                 .then((json) =>{
                     this.playlists.push({ id: json.id, name: json.name, selected: true })
-                    this.selectPlaylist(json.id);
+                    this.selectPlaylist((json.id).toString());
                 })
             
             this.newPlaylist = "New Playlist";
         },
         selectPlaylist(playlist) {
-            if (this.selectedPlaylists.includes(playlist)) {
-                this.selectedPlaylists = this.selectedPlaylists.filter(item => !playlist.includes(item));
+            let selectedPlaylist = playlist.toString();
+            if (this.selectedPlaylists.includes(selectedPlaylist)) {
+                this.selectedPlaylists = this.selectedPlaylists.filter(item => !selectedPlaylist.includes(item));
             }
             else {
-                this.selectedPlaylists.push(playlist);
+                this.selectedPlaylists.push(selectedPlaylist);
             }
         },
         async addInPlaylist() {
-
-            /* Ajouter les vidéos dans les playlists */
             
-            for(let p of this.selectedPlaylists){
+            for (let p2 of this.selectedPlaylists) {
+                let p = parseInt(p2);
                 const req = await fetch('http://localhost:8080/api/addtoplaylist', {
                     method: 'POST',
                     headers: {

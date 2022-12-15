@@ -23,14 +23,19 @@
                 <img id="logo" src="../assets/images/logo.svg" >
             </a>
             
-            <h2 id="favoriteTitle">PlayLists</h2>
+            <h2 id="playlistTitle">Playlists</h2>
             <!-- Load all videos -->
-            
-            <span v-for="n in names">
-                <input class="button" type="submit" :value="n.name" @click="showPlayList(n.id)"/>
-            </span>
-            
-            <h3>{{ name }}</h3>
+
+            <div id="playlistTabs">
+                <span v-for="n in names">
+                    <input id="playlistTab" class="button" type="submit" :value="n.name" @click="showPlayList(n.id)"/>
+                </span>
+            </div>
+
+            <a id="delPlaylist">
+                <input id="delPlaylistButton" class="button" type="button" value="🗑️" sec:authorize="isAuthenticated()">
+            </a>
+            <h3 id="playlistTitle" v-bind:value="name"><i>Le nom de la playlist</i></h3>
 
             <span id="#musicList" v-for="vi in videos">
                 <iframe id="music" :src = "vi" width="420" height="315" frameborder="0" allowfullscreen><br></iframe>
