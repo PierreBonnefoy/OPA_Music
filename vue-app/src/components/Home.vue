@@ -162,6 +162,8 @@ export default {
 
 
         // playlist menu
+
+        /* Method to open or close the playlist menu (and reinitialize it) */
         async ChangeDisplayMenu(v) {
 
             this.playlists = []
@@ -187,6 +189,8 @@ export default {
             // show or hide menu
             this.displayMenu = !this.displayMenu;
         },
+
+        /* Method to create a playlist */
         async createPlaylist() {
             const req = await fetch('http://localhost:8080/api/addplaylist', {
                     method: 'POST',
@@ -205,16 +209,20 @@ export default {
             
             this.newPlaylist = "New Playlist";
         },
+
+        /* Method to select a playlist in the checkbox */
         selectPlaylist(playlist) {
             let selectedPlaylist = playlist.toString();
+            // if already selected
             if (this.selectedPlaylists.includes(selectedPlaylist)) {
                 this.selectedPlaylists = this.selectedPlaylists.filter(item => !selectedPlaylist.includes(item));
             }
-            else {
+            else { // if not
                 this.selectedPlaylists.push(selectedPlaylist);
             }
         },
-        /* Mathod add current music to a PlayList */
+
+        /* Mathod add current music to the selected playlists */
         async addInPlaylist() {
             
             for (let p2 of this.selectedPlaylists) {
