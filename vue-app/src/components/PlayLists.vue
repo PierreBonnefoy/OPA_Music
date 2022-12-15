@@ -14,6 +14,11 @@
             <link rel="stylesheet" href="/css/home.css">
             <link rel="shortcut icon" type="/image/png" href="/images/icon.png">
         </head>
+        <header>
+            <div id="favButton">
+                <RouterLink v-if="logged" id=favorite class=button to="/favorites">⭐️ Favorites</RouterLink>
+            </div>
+        </header>
         <body>
             <span id="userName">{{username}}</span>
             

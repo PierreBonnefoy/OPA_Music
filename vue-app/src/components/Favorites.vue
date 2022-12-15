@@ -14,6 +14,11 @@
             <link rel="stylesheet" href="/css/home.css">
             <link rel="shortcut icon" type="/image/png" href="/images/icon.png">
         </head>
+        <header>
+            <div id="playlistButton">
+                <RouterLink v-if="logged" id=playlist class=button to="/playlists"><span class="blue">▶</span> Playlists</RouterLink>
+            </div>
+        </header>
         <body>
             <span id="userName">{{username}}</span>
             
