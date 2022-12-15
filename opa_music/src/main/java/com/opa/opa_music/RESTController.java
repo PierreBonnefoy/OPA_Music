@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
 
+import io.micrometer.core.ipc.http.HttpSender.Response;
 import net.minidev.json.JSONObject;
 
 
@@ -23,6 +24,12 @@ public class RESTController {
 
     @Autowired
     private FavoritesRepository allFavorites; 
+
+    @Autowired
+    private PlayListRepository allPlayList;
+
+    @Autowired
+    private PlayListTableRepository allPTab;
 
     @RequestMapping("/register")
     public ResponseEntity<String> doRegister(@RequestBody User user){
@@ -55,5 +62,24 @@ public class RESTController {
     @RequestMapping("favvue")
     public List<Favorites> favvue(@RequestBody JSONObject user){
         return allFavorites.findAllByUser(user.get("username").toString());
+    }
+
+    @RequestMapping("addplaylist")
+    public PlaylistTable addplaylist(@RequestBody PlaylistTable data){
+        allPTab.save(data);
+        return data;
+    }
+
+    @RequestMapping("addtoplaylist")
+    public ResponseEntity<String> addtoplaylist(@RequestBody PlayList data){
+        JSONObject resp = new JSONObject();
+        allPlayList.save(data);
+        return ResponseEntity.ok(resp.toJSONString());
+    }
+
+    @RequestMapping("/loadAll")
+    public List<PlaylistTable> loadAll(@RequestBody JSONObject user){
+
+        return allPTab.findAllByUser(user.get("username").toString());
     }
 }

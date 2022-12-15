@@ -7,31 +7,32 @@ import javax.persistence.Id;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@AllArgsConstructor
+@Table(name = "playlisttable")
 @NoArgsConstructor
-@Table(name = "favorites")
-public class Favorites {
+@AllArgsConstructor
+public class PlaylistTable {
     @Id
     @GeneratedValue
-    @Column(name = "favorites_id")
+    @Column(name = "playlist_id")
     Integer id;
 
     @Column(name = "user_name")
     @OrderColumn(name = "user_name")
     String user;
 
-    @Column(name = "url")
-    String url;
+    @Column(name = "playlist_name")
+    String name;
 
-    public Favorites(String user,String link){
+
+
+    public PlaylistTable( String user,String name){
         this.user=user;
-        this.url=link;
+        this.name=name;
     }
 }

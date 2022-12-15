@@ -1,4 +1,5 @@
 <script setup>
+import { resolveTransitionHooks } from 'vue';
 import '../assets/css/general.css';
 import '../assets/css/home.css';
 </script>
@@ -87,7 +88,7 @@ import '../assets/css/home.css';
                     <input id="addFavButton" class="button" type="button" value="⭐️" @click="addfavvue(vi)">
                 </a>
                 <a>
-                    <input id="addPlaylistButton" class="button blue" type="button" value="▶"  @click="ChangeDisplayMenu">
+                    <input id="addPlaylistButton" class="button blue" type="button" value="▶"  @click="ChangeDisplayMenu(vi)">
                 </a>
             </span>
         </div>
@@ -107,12 +108,9 @@ export default {
             // playlist menu
             displayMenu: false,
             newPlaylist: "New Playlist",
-            playlists: [
-                { id: "1", name: "p1", selected: false },
-                { id: "2", name: "p2", selected: false },
-                { id: "3", name: "p3", selected: false }
-            ],
-            selectedPlaylists: []
+            playlists: [],
+            selectedPlaylists: [],
+            selectedVideo: "",
         };
     },
 
@@ -160,18 +158,47 @@ export default {
 
 
         // playlist menu
-        ChangeDisplayMenu() {
+        async ChangeDisplayMenu(v) {
+
+            this.playlists = []
+            const req = await fetch('http://localhost:8080/api/loadAll', {
+                method: 'POST',
+                headers: {
+                    "Content-Type":'application/json',
+                },
+                body: JSON.stringify({
+                    username : this.username,
+                })
+            }).then((response) => response.json())
+            .then((json)=>{
+                for(let i of json){
+                    this.playlists.push({id : i.id,name : i.name, selected:false})
+                }
+            })
+
             // reset form
-            this.playlists.forEach((item) => (item.selected = false));
             this.selectedPlaylists = [];
             this.newPlaylist = "New Playlist";
+            this.selectedVideo = v
             // show or hide menu
             this.displayMenu = !this.displayMenu;
         },
-        createPlaylist() {
-            let newId = (this.playlists.length + 1).toString();
-            this.playlists.push({ id: newId, name: this.newPlaylist, selected: true });
-            this.selectPlaylist(newId);
+        async createPlaylist() {
+            const req = await fetch('http://localhost:8080/api/addplaylist', {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type":'application/json',
+                    },
+                    body: JSON.stringify({
+                        user : this.username,
+                        name : this.newPlaylist,
+                    })
+                }).then((response) => response.json())
+                .then((json) =>{
+                    this.playlists.push({ id: json.id, name: json.name, selected: true })
+                    this.selectPlaylist(json.id);
+                })
+            
             this.newPlaylist = "New Playlist";
         },
         selectPlaylist(playlist) {
@@ -182,12 +209,26 @@ export default {
                 this.selectedPlaylists.push(playlist);
             }
         },
-        addInPlaylist() {
+        async addInPlaylist() {
 
             /* Ajouter les vidéos dans les playlists */
+            for(let p of this.selectedPlaylists){
+                const req = await fetch('http://localhost:8080/api/addtoplaylist', {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type":'application/json',
+                    },
+                    body: JSON.stringify({
+                        user : this.username,
+                        link : this.selectedVideo,
+                        id : p.id,
+                        name : p.name,
+                    })
+                })
+            }
 
             this.ChangeDisplayMenu();
-        }
+        },
     },
 }
 
