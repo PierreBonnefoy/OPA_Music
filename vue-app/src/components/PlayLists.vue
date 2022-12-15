@@ -27,7 +27,7 @@
             <!-- Load all videos -->
             
             <span v-for="n in names">
-                <input class="button" type="submit" :value="n.name" @click="load(n.name)"/>
+                <input class="button" type="submit" :value="n.name" @click="showPlayList(n.id)"/>
             </span>
             
             <h3>{{ name }}</h3>
@@ -51,6 +51,7 @@ export default {
             videos: [],
             name: "",
             names: [],
+            playlist: "",
             username: localStorage.getItem("username"),
             logged: localStorage.getItem("logged"),
         };
@@ -68,23 +69,6 @@ export default {
             localStorage.removeItem('logged')
             this.$router.push("/login")
         },
-        async loadAll(){
-            const req = await fetch('http://localhost:8080/api/loadAll', {
-                method: 'POST',
-                headers: {
-                    "Content-Type":'application/json',
-                },
-                body: JSON.stringify({
-                    username : this.username,
-                })
-            }).then((response) => response.json())
-            .then((json)=>{
-                console.log(json)
-                for(let i of json){
-                    this.names.push(i.name)
-                }
-            })
-        },
 
         async loadAll(){
             this.names = []
@@ -98,6 +82,27 @@ export default {
                 })
             }).then((response) => response.json())
             .then((json)=>{this.names = json})
+        },
+        async showPlayList(p){
+            this.videos = []
+            this.playlist = p
+            const req = await fetch('http://localhost:8080/api/showPlayList', {
+                method: 'POST',
+                headers: {
+                    "Content-Type":'application/json',
+                },
+                body: JSON.stringify({
+                    username : this.username,
+                    pid : p,
+                })
+            }).then((response) => response.json())
+            .then((json)=>{
+                console.log(json)
+                for(let i of json){
+                    this.videos.push(i.url)
+                }
+            })
+
         }
     },
 }

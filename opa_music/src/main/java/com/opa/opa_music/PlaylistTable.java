@@ -29,8 +29,6 @@ public class PlaylistTable {
     @Column(name = "playlist_name")
     String name;
 
-
-
     public PlaylistTable( String user,String name){
         this.user=user;
         this.name=name;
