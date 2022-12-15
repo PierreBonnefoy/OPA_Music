@@ -51,12 +51,11 @@ import '../assets/css/home.css';
                 <h3>Choose a playlist</h3>
             
                 <form>
-                    <div v-for="playlist in playlists">
-                        <input type="checkbox" v-bind:id="playlist.id" @click="()=>{selectPlaylist(playlist.id)}"
+                    <div id="checkboxPlaylist" v-for="playlist in playlists">
+                        <input class="checkButton" type="checkbox" v-bind:id="playlist.id" @click="()=>{selectPlaylist(playlist.id)}"
                             v-model="playlist.selected" />
-                        <label v-bind:for="playlist.id">{{playlist.name}}</label>
+                        <label id="nomPlaylist" v-bind:for="playlist.id">{{playlist.name}}</label>
                     </div>
-                    <p>{{selectedPlaylists}}</p>
             
                     <a>
                         <input id="playlistMenuButton" class="button" type="button" value="Add" @click="addInPlaylist" />
@@ -66,7 +65,7 @@ import '../assets/css/home.css';
                 <hr>
                 <div>
                     <h3>Create a new playlist : {{newPlaylist}}</h3>
-                    <input v-model="newPlaylist" type="text" v-on:keyup.enter="createPlaylist" />
+                    <input id="textFieldPlaylist" v-model="newPlaylist" type="text" v-on:keyup.enter="createPlaylist" />
                     <input id="playlistMenuButton" class="button" type="button" value="Create" @click="createPlaylist"
                         v-if="newPlaylist != ''" />
                 </div>
