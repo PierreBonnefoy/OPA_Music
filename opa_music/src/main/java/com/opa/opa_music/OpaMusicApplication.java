@@ -13,7 +13,6 @@ import org.springframework.web.filter.CorsFilter;
 
 @SpringBootApplication
 public class OpaMusicApplication {
-	    // tous les includes depuis org.springframework, sauf java.util.Collections
 
     // Fix the CORS "errors"
     @Bean
