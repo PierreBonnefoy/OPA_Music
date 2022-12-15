@@ -7,7 +7,7 @@
 
 ### Negative Points
 - The fact that the Vue JS client and Spring Server are not hosted on the same server.
-- Playlist system wich is not reading the videos next automatically.
+- Playlist system wich is not reading the next video automatically.
 
 ## Difficulty encoutered
 ### Authentication System
