@@ -10,15 +10,15 @@ import org.springframework.data.repository.CrudRepository;
 public interface PlayListRepository extends CrudRepository<PlayList, Long>{
     
     /* Show PlayList's musics */
-    List<PlayList> findAllByUserAndId(String user, Integer id);
+    List<PlayList> findAllByUserAndPid(String user, Integer pid);
 
     /* Delete a PlayList */
     @Transactional @Modifying
-    Long deleteByUserAndId(Integer id, String user);
+    Long deleteByUserAndPid(Integer pid, String user);
 
     /* Delete a musique from a PlayList */
     @Transactional @Modifying
-    Long deleteByUserAndUrlAndId(Integer id, String user, String url);
+    Long deleteByUserAndUrlAndPid(Integer pid, String user, String url);
 
 
 }
