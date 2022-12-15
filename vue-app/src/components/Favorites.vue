@@ -19,7 +19,7 @@
             
             <div id="out"><input v-if="logged" @click="logout" id="logout" class="button" type="submit" value="Sign Out" /></div>
 
-            <a class="return" data-th-href="@{/clear}">
+            <a class="return"  href="/">
                 <img id="logo" src="../assets/images/logo.svg" >
             </a>
             
@@ -53,6 +53,10 @@ export default {
     
   
     methods: {
+        //Returning to home
+                returnHome(){
+            this.router.push("/");
+        },
         /* Logout method */
         logout(){
             localStorage.removeItem('token')

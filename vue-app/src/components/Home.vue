@@ -36,7 +36,7 @@ import '../assets/css/home.css';
     <body>
         <div id="mainPage">
             <span id="userName">{{username}}</span>
-            <a class="return">
+            <a class="return" href="/">
                 <img id="logo" src="../assets/images/logo.svg" >
             </a>
 
@@ -118,6 +118,7 @@ export default {
     
   
     methods: {
+        //Proceed the logout by clearing the local storage.
         logout(){
             localStorage.removeItem('token')
             localStorage.removeItem('username')

@@ -32,6 +32,7 @@
 
 <script>
 export default{
+    //Data for the v-models
     data: () => {
         return {
             username: "",
@@ -39,9 +40,10 @@ export default{
         };
     },
     methods:{
-        
+        // Doing the login action
         async login(e){
             e.preventDefault();
+            //Post Request on the Spring REST API
             const response = await fetch("http://localhost:8080/api/auth/signin", {
                 method : "POST",
                 headers : {
@@ -54,11 +56,14 @@ export default{
             })
             .then(blob => blob.json())
             .then(data => {
+                //Verification  of the token presence
                 if(data.token){
-                    console.log(data)
+                    //We store the token and the log variable into the local storage.
                     localStorage.setItem('token', data.token)
                     localStorage.setItem('username', data.username)
                     localStorage.setItem('logged', true)
+
+                    //Redirect to home
                     this.$router.push('/')
                 }
                 else{

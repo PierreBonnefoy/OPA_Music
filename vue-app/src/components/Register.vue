@@ -36,6 +36,7 @@
 <script>
 
 export default {
+  //Initialization of the data
   data() {
     return {
       name : "",
@@ -45,20 +46,24 @@ export default {
   },
 
   methods: {
+    //Method wich do the register action.
     async register(e) {
+    //POST request on the REST API
     const req = await fetch('http://localhost:8080/api/register', {
-    method: 'POST',
-    headers: {
-        "Content-Type": 'application/json',
-    },
-    body: JSON.stringify({
-        name: this.name,
-        password: this.password,
-        email: this.email
-    })
+      method: 'POST',
+      headers: {
+          "Content-Type": 'application/json',
+      },
+      body: JSON.stringify({
+          name: this.name,
+          password: this.password,
+          email: this.email
+      })
     })
     .then(async response => {
+        //waiting for the response of the API
         const data = await response.json();
+        //Verification if the user have been created.
         if(data.status == 0){
             const error = (data && data.message) || response.status;
             alert("Username already taken")
@@ -66,26 +71,14 @@ export default {
         }
 
         this.postId = data.id;
+        //Redirection to the login page
         this.$router.push('/login')
     })
     .catch(error => {
         this.errorMessage = error;
         console.error("ERROR Username already taken :", error);
     })
-
-    },
-
-    async getData() {
-      try {
-        let response = await fetch("http://localhost:8080/api/users");
-        this.posts = await response.json();
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  },
-
-  created() {
+    }
   },
 };
 </script>
