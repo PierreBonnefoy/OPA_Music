@@ -33,7 +33,7 @@
             </div>
 
             <a id="delPlaylist">
-                <input id="delPlaylistButton" class="button" type="button" value="🗑️" @click="supprPlay">
+                <input id="delPlaylistButton" class="button" type="button" v-if="show" value="🗑️" @click="delPlay">
             </a>
             <h3 id="playlistTitle">{{ name }}</h3>
 
@@ -41,7 +41,7 @@
                 <iframe id="music" :src = "vi" width="420" height="315" frameborder="0" allowfullscreen><br></iframe>
                 
                 <a id="addfavvue">
-                    <input id="delFavButton" class="button" type="button" value="🗑️" @click="supprOfPlay(vi)">
+                    <input id="delFavButton" class="button" type="button" value="🗑️" @click="delOfPlay(vi)">
                 </a>
             </span>      
         </body>
@@ -53,6 +53,7 @@
 export default {
     data() {
         return {
+            show : false,
             videos: [],
             names: [],
             name : "",
@@ -68,13 +69,14 @@ export default {
     
   
     methods: {
+        /* Logout method */
         logout(){
             localStorage.removeItem('token')
             localStorage.removeItem('username')
             localStorage.removeItem('logged')
             this.$router.push("/login")
         },
-
+        /* Load all PlayLists in buttons and show only their names */
         async loadAll(){
             this.names = []
             const req = await fetch('http://localhost:8080/api/loadAll', {
@@ -88,10 +90,12 @@ export default {
             }).then((response) => response.json())
             .then((json)=>{this.names = json})
         },
+        /* Show all music in selected PlayList p */
         async showPlayList(p){
             this.videos = []
             this.playlist = p.id
             this.name = p.name
+            this.show = true
             const req = await fetch('http://localhost:8080/api/showPlayList', {
                 method: 'POST',
                 headers: {
@@ -108,8 +112,9 @@ export default {
                 }
             })
         },
-        async supprOfPlay(v){
-            const req = await fetch('http://localhost:8080/api/supprOfPlay', {
+        /* Remove selected music v of the current PlayList */
+        async delOfPlay(v){
+            const req = await fetch('http://localhost:8080/api/delOfPlay', {
                 method: 'POST',
                 headers: {
                     "Content-Type":'application/json',
@@ -122,8 +127,10 @@ export default {
             })
             this.showPlayList({id:this.playlist,name:this.name})
         },
-        async supprPlay(){
-            const req = await fetch('http://localhost:8080/api/supprPlay', {
+        /* Remove entirely PlayList of database */
+        async delPlay(){
+            this.show = false
+            const req = await fetch('http://localhost:8080/api/delPlay', {
                 method: 'POST',
                 headers: {
                     "Content-Type":'application/json',

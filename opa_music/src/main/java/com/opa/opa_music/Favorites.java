@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "favorites")
 /*
- * Class Entity for JPA of favorites and there owners
+ * Class Entity for JPA of favorites and their owners
  */
 public class Favorites {
     /* Id of the favorite */
