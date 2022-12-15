@@ -248,11 +248,13 @@
 .checkButton{
     position: absolute; 
     margin-left: -10px;
+    cursor: pointer;
 }
 
 #nomPlaylist{
     display: block;
     margin: 0px 15px;
+    cursor: pointer;
 }
 
 
