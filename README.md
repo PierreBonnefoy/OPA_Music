@@ -11,6 +11,18 @@ API. However, we could not extract music from all Youtube videos,
 so the project became an alternative youtube client where you can
 search every video on Youtube and add it to your favorites to keep it safe.
 
+### Implemented Features
+#### Thymeleaf Client
+- Authentication System
+- Video research with Youtube API
+- Favorites videos saving
+
+#### Vue JS Client
+- Authentication System
+- Video Research with Youtube API
+- Favorites videos saving
+- Playlist system to classify your favorites videos.
+
 ## Installation Instructions
 ### Prerequesites
 You need to have installed on your laptop the following softwares :
@@ -18,6 +30,9 @@ You need to have installed on your laptop the following softwares :
 - Spring Boot
 - Thymeleaf 
 - Maven
+- Node JS 16
+- NPM
+- Vue JS
 - Visual Studio Code with the following extensions : 
     1. “Extension Pack for Java”, vscjava.vscode-java-pack, Microsoft
     2. “Spring Boot Extension Pack”, pivotal.vscode-boot-dev-pack, Pivotal 
@@ -27,6 +42,7 @@ You need to have installed on your laptop the following softwares :
     6. “Java Code Generators”, sohibe.java-generate-setters-getters, Sohibe
 
 ### Launching Instructions
+#### Thymeleaf Version
 - Clone the Git Repository by using : `git clone https://github.com/UJM-INFO/2022-pwa-e.git`
 - Then go to the repository where you clone : `cd 2022-pwa-e.git`
 - Launch VS Code : `code .`
@@ -37,19 +53,31 @@ You need to have installed on your laptop the following softwares :
 - Go to the URL : `localhost:8080`
 - You got it.
 
+#### Vue JS Version
+- Clone the Git Repository by using : `git clone https://github.com/UJM-INFO/2022-pwa-e.git`
+- Then go to the repository where you clone : `cd 2022-pwa-e.git`
+- Launch VS Code : `code .`
+- Wait for VS Code to Open the Java Project
+- Go to the Spring Boot Dashboard in the left menu
+- Click on the Launching Button
+- Now the Spring Server is launch 
+- Go to the vue-app directory `cd vue-app`
+- Installation of NPM required packages : `npm install`
+- Launching of the Vue JS client : `npm run dev`
+- Open the Web Browser of you choice
+- Go to the URL : `localhost:5173`
+- You got it.
+
 ## System Architecture
 ### Entity-Association Diagram
-![Texte alternatif](opa_music/src/main/resources/static/images/entity_association.png)
+![Entity Association](opa_music/src/main/resources/static/images/entity_association2.png)
 
+### Global Architecture
+![Global Architecture](opa_music/src/main/resources/static/images/general-architecture.png)
 
-## Actual Project State
-For now, the project is not finished. We have only implemented the Spring part and we still have to do the Vue JS part to make it more dynamic.
+### Vue Architecture
+![Entity Association](opa_music/src/main/resources/static/images/vue_architecture.png)
 
-### Already implemented features
-- The Authentication System and User Database is fully finished.
-- The Youtube API communication is finished.
-- The Favourites System is operationnal but we want to enhance it by adding a multiplaylist system.
-- The design of the application has been done (and can be change by the Vue JS implementation).
 
 ## Ressources
 ### Tutorials we have followed
@@ -59,3 +87,7 @@ For now, the project is not finished. We have only implemented the Spring part a
 - Java Documentation : https://docs.oracle.com/en/java/
 - MDN Documentation : https://developer.mozilla.org/fr/
 - Google Youtube API Documentation : https://developers.google.com/youtube/v3
+- https://youtu.be/cceABfrGgm4
+- https://www.bezkoder.com/spring-boot-vue-js-authentication-jwt-spring-security/#Front-end_with_Vuejs_038_Vuex
+- https://www.youtube.com/watch?v=xfuIkI2C8-o
+- https://stackabuse.com/conditional-rendering-in-vue-with-v-if-v-show-v-else-and-v-else-if/
