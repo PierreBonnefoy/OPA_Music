@@ -13,6 +13,6 @@ public interface PlayListTableRepository extends CrudRepository<PlaylistTable, L
 
     /* Delete a PlayList */
     @Transactional @Modifying
-    Long deleteByUserAndId(Integer id, String user);
+    Long deleteByUserAndId(String user, Integer id);
     
 }

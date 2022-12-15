@@ -14,11 +14,11 @@ public interface PlayListRepository extends CrudRepository<PlayList, Long>{
 
     /* Delete a PlayList */
     @Transactional @Modifying
-    Long deleteByUserAndPid(Integer pid, String user);
+    Long deleteByUserAndPid( String user,Integer pid);
 
     /* Delete a musique from a PlayList */
     @Transactional @Modifying
-    Long deleteByUserAndUrlAndPid(Integer pid, String user, String url);
+    Long deleteByUserAndUrlAndPid(String user,  String url,Integer pid);
 
 
 }

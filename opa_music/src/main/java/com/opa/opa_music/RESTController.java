@@ -86,4 +86,19 @@ public class RESTController {
     public List<PlayList> show(@RequestBody JSONObject data){
         return allPlayList.findAllByUserAndPid(data.get("username").toString(),(Integer) data.get("pid"));
     }
+
+    @RequestMapping("/supprOfPlay")
+    public ResponseEntity<String> supprOfPlay(@RequestBody PlayList p){
+        JSONObject resp = new JSONObject();
+        allPlayList.deleteByUserAndUrlAndPid( (String) p.user,(String) p.url,(Integer) p.pid);
+        return ResponseEntity.ok(resp.toJSONString());
+    }
+
+    @RequestMapping("/supprPlay")
+    public ResponseEntity<String>supprPlay(@RequestBody JSONObject data){
+        JSONObject resp = new JSONObject();
+        allPlayList.deleteByUserAndPid(data.get("user").toString(), (Integer) data.get("pid"));
+        allPTab.deleteByUserAndId(data.get("user").toString(), (Integer) data.get("pid"));
+        return ResponseEntity.ok(resp.toJSONString());
+    }
 }

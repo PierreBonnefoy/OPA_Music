@@ -33,7 +33,7 @@
             </div>
 
             <a id="delPlaylist">
-                <input id="delPlaylistButton" class="button" type="button" value="🗑️" sec:authorize="isAuthenticated()">
+                <input id="delPlaylistButton" class="button" type="button" value="🗑️" @click="supprPlay">
             </a>
             <h3 id="playlistTitle" v-bind:value="name"><i>Le nom de la playlist</i></h3>
 
@@ -41,7 +41,7 @@
                 <iframe id="music" :src = "vi" width="420" height="315" frameborder="0" allowfullscreen><br></iframe>
                 
                 <a id="addfavvue">
-                    <input id="delFavButton" class="button" type="button" value="🗑️" @click="supprfavvue(vi)">
+                    <input id="delFavButton" class="button" type="button" value="🗑️" @click="supprOfPlay(vi)">
                 </a>
             </span>      
         </body>
@@ -107,7 +107,34 @@ export default {
                     this.videos.push(i.url)
                 }
             })
-
+        },
+        async supprOfPlay(v){
+            const req = await fetch('http://localhost:8080/api/supprOfPlay', {
+                method: 'POST',
+                headers: {
+                    "Content-Type":'application/json',
+                },
+                body: JSON.stringify({
+                    user : this.username,
+                    pid : this.playlist,
+                    url : v,
+                })
+            })
+            this.showPlayList(this.playlist)
+        },
+        async supprPlay(){
+            const req = await fetch('http://localhost:8080/api/supprPlay', {
+                method: 'POST',
+                headers: {
+                    "Content-Type":'application/json',
+                },
+                body: JSON.stringify({
+                    user : this.username,
+                    pid : this.playlist,
+                })
+            })
+            this.videos = []
+            this.loadAll()
         }
     },
 }
