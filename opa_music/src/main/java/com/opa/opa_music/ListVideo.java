@@ -5,8 +5,10 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-// Create a list of Video Object
 @Component 
+/*
+ * Create a list of Video Object to save them
+ */
 public class ListVideo{
     public List<Video> listVideo = new ArrayList<>();
 

@@ -16,19 +16,26 @@ import lombok.NoArgsConstructor;
 @Table(name = "playlisttable")
 @NoArgsConstructor
 @AllArgsConstructor
+/*
+ * Class Entity for JPA of name and owner of a PlayList
+ */
 public class PlaylistTable {
+    /* Id of a PlayList */
     @Id
     @GeneratedValue
     @Column(name = "playlist_id")
     Integer id;
 
+    /* Owner of a PlayList */
     @Column(name = "user_name")
     @OrderColumn(name = "user_name")
     String user;
 
+    /* Name of a PlayList */
     @Column(name = "playlist_name")
     String name;
 
+    /* Constructor of this Class (use for database) */
     public PlaylistTable( String user,String name){
         this.user=user;
         this.name=name;

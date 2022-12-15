@@ -9,7 +9,6 @@ import java.net.URLConnection;
 
 import javax.inject.Inject;
 
-import org.hibernate.query.criteria.internal.expression.function.SubstringFunction;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
