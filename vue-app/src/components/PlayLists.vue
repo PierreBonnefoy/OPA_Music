@@ -24,7 +24,6 @@
             </a>
             
             <h2 id="playlistTitle">Playlists</h2>
-            <!-- Load all videos -->
 
             <div id="playlistTabs">
                 <span v-for="n in names">
@@ -32,18 +31,21 @@
                 </span>
             </div>
 
-            <a id="delPlaylist">
+            <a id="delPlaylist" v-if="show">
                 <input id="delPlaylistButton" class="button" type="button" v-if="show" value="🗑️" @click="delPlay">
             </a>
-            <h3 id="playlistTitle">{{ name }}</h3>
+            <h3 id="playlistName" v-if="show">{{ name }}</h3>
 
-            <span id="#musicList" v-for="vi in videos">
-                <iframe id="music" :src = "vi" width="420" height="315" frameborder="0" allowfullscreen><br></iframe>
-                
-                <a id="addfavvue">
-                    <input id="delFavButton" class="button" type="button" value="🗑️" @click="delOfPlay(vi)">
-                </a>
-            </span>      
+            <!-- Load all videos -->
+            <div id="musicList">
+                <span v-for="vi in videos">
+                    <iframe id="music" :src = "vi" width="420" height="315" frameborder="0" allowfullscreen><br></iframe>
+                    
+                    <a id="addfavvue">
+                        <input id="delFavButton" class="button" type="button" value="🗑️" @click="delOfPlay(vi)">
+                    </a>
+                </span>      
+            </div>
         </body>
     </html>
 </template>

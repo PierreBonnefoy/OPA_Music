@@ -25,13 +25,15 @@
             
             <h2 id="favoriteTitle">Favorites</h2>
             <!-- Load all videos -->
-            <span id="#musicList" v-for="vi in videos">
-                <iframe id="music" :src = "vi" width="420" height="315" frameborder="0" allowfullscreen><br></iframe>
-                
-                <a id="addfavvue">
-                    <input id="delFavButton" class="button" type="button" value="🗑️" @click="delfavvue(vi)">
-                </a>
-            </span>      
+            <div id="musicList">
+                <span v-for="vi in videos">
+                    <iframe id="music" :src = "vi" width="420" height="315" frameborder="0" allowfullscreen><br></iframe>
+                    
+                    <a id="addfavvue">
+                        <input id="delFavButton" class="button" type="button" value="🗑️" @click="delfavvue(vi)">
+                    </a>
+                </span>   
+            </div>   
         </body>
     </html>
 </template>

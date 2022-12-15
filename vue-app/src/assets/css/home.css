@@ -17,7 +17,7 @@
     width: 35%;
     margin: 100px auto;
     border-bottom: solid 2px #ffe74e;
-    animation: topScroll2 3s;
+    animation: topScroll2 2s;
 }
 
 #playlistTitle {
@@ -27,7 +27,18 @@
     width: 35%;
     margin: 100px auto;
     border-bottom: solid 2px aqua;
-    animation: topScroll2 3s;
+    animation: topScroll2 2s;
+}
+
+#playlistName {
+    font-size: 30px;
+    text-align: center;
+    color: rgb(10, 225, 225);
+    width: 25%;
+    margin: 100px auto;
+    border: solid 2px rgb(10, 225, 225);
+    padding: 20px;
+    animation: topScroll2 2s;
 }
 
 .SearchSpace {
@@ -132,9 +143,11 @@
     border: solid 3px #c0c0c1;
 }
 
+
 #addFavButton {
-    position: relative;
-    margin-left: -12em;
+    position: absolute;
+    margin-left: -11.5em;
+    margin-top: 17.5em;
     width: 70px;
 }
 
@@ -144,10 +157,11 @@
 }
 
 
-#addPlaylistButton {
-    position: relative;
+#addPlaylistButton, #delFavButton {
+    position: absolute;
     margin-left: -6em;
     width: 70px;
+    margin-top: 17.5em;
 }
 
 #addPlaylistButton:hover {
@@ -166,6 +180,7 @@
     width: 150px;
     border: solid 3px aqua;
     font-size: 22px;
+    animation: topScroll2 3s;
 }
 
 #delPlaylistButton:hover {
@@ -174,11 +189,6 @@
 }
 
 
-#delFavButton {
-    position: relative;
-    margin-left: -85px;
-    width: 70px;
-}
 
 #delFavButton:hover {
     background-color: #c0c0c1;
@@ -226,7 +236,7 @@
 #checkboxPlaylist{
     text-align: left;
     margin: 0px 15% 0px 15%;
-    padding: 0px 10% 5px 10%;
+    padding: 3px 10% 3px 10%;
 }
 
 #checkboxPlaylist:hover {
@@ -318,6 +328,7 @@
     border-color: rgb(11, 205, 235);
     color: rgb(11, 205, 235);
     background-color: #0b1727;
+    animation: topScroll 3s;
 }
 
 #playlistTab:hover {
