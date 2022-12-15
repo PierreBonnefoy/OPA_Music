@@ -6,11 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-// Save SearchSpace's String
 @Data 
 @NoArgsConstructor 
 @AllArgsConstructor 
 @Component
+/*
+ * Save SearchSpace's String
+ */ 
 public class Search {
     public String search;
 }
