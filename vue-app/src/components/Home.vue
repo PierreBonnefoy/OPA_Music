@@ -80,16 +80,18 @@ import '../assets/css/home.css';
 
             <br>
             <!-- Load all videos -->
-            <span id="#musicList" v-for="vi in videos">
-                <iframe id="music" :src = "vi" width="420" height="315" frameborder="0" allowfullscreen><br></iframe>
-                
-                <a id="addfavvue">
-                    <input id="addFavButton" class="button" type="button" value="⭐️" @click="addfavvue(vi)">
-                </a>
-                <a>
-                    <input id="addPlaylistButton" class="button blue" type="button" value="▶"  @click="ChangeDisplayMenu(vi)">
-                </a>
-            </span>
+            <div id="musicList">
+                <span v-for="vi in videos">
+                    <iframe id="music" :src = "vi" width="420" height="315" frameborder="0" allowfullscreen><br></iframe>
+                    
+                    <a id="addfavvue">
+                        <input id="addFavButton" class="button" type="button" value="⭐️" @click="addfavvue(vi)">
+                    </a>
+                    <a>
+                        <input id="addPlaylistButton" class="button blue" type="button" value="▶"  @click="ChangeDisplayMenu(vi)">
+                    </a>
+                </span>
+            </div>
         </div>
     </body>
 
@@ -129,7 +131,7 @@ export default {
 
             // Make the search 
             let url = "https://www.googleapis.com/youtube/v3/search"
-            let key = "AIzaSyCPciyCY789MtbHofF9M05AVx-p0DtXq_0"
+            let key = "AIzaSyD5M5IzAQRkvydUZ12viKfkUzTwSa-BPAY"
             let type = "video"
             let part = "snippet"
             let maxResults = max

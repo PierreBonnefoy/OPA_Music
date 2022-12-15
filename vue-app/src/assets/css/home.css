@@ -134,7 +134,7 @@
 
 #addFavButton {
     position: relative;
-    margin-left: -165px;
+    margin-left: -12em;
     width: 70px;
 }
 
@@ -144,10 +144,9 @@
 }
 
 
-
 #addPlaylistButton {
     position: relative;
-    margin-left: -85px;
+    margin-left: -6em;
     width: 70px;
 }
 
