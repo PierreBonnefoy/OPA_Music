@@ -29,7 +29,7 @@
                 <iframe id="music" :src = "vi" width="420" height="315" frameborder="0" allowfullscreen><br></iframe>
                 
                 <a id="addfavvue">
-                    <input id="delFavButton" class="button" type="button" value="🗑️" @click="supprfavvue(vi)">
+                    <input id="delFavButton" class="button" type="button" value="🗑️" @click="delfavvue(vi)">
                 </a>
             </span>      
         </body>
@@ -53,14 +53,16 @@ export default {
     
   
     methods: {
+        /* Logout method */
         logout(){
             localStorage.removeItem('token')
             localStorage.removeItem('username')
             localStorage.removeItem('logged')
             this.$router.push("/login")
         },
-        async supprfavvue(v){
-            const req = await fetch('http://localhost:8080/api/supprfavvue', {
+        /* Remove music v from Favorites for current user */
+        async delfavvue(v){
+            const req = await fetch('http://localhost:8080/api/delfavvue', {
                 method: 'POST',
                 headers: {
                     "Content-Type":'application/json',
@@ -72,6 +74,7 @@ export default {
             })
             this.favvue()
         },
+        /* Load all current user Favorites' */
         async favvue(){
             this.videos = []
             const req = await fetch('http://localhost:8080/api/favvue', {
