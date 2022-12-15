@@ -125,6 +125,7 @@ export default {
             localStorage.removeItem('logged')
             this.$router.push("/login")
         },
+        /* Method of the search bar (Youtube's API) */
         async research(){
             this.videos = []
             this.search = this.search.replace("\\s","+")
@@ -145,6 +146,7 @@ export default {
                     this.videos.push("http://www.youtube.com/embed/" + json.items[i].id.videoId+ "?showinfo=0&modestbranding=1")
             }})
         },
+        /* Method add music v in current's user Favorites */
         async addfavvue(v){
             const req = await fetch('http://localhost:8080/api/addfavvue', {
                 method: 'POST',
@@ -212,6 +214,7 @@ export default {
                 this.selectedPlaylists.push(selectedPlaylist);
             }
         },
+        /* Mathod add current music to a PlayList */
         async addInPlaylist() {
             
             for (let p2 of this.selectedPlaylists) {
